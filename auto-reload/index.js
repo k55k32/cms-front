@@ -35,6 +35,10 @@ function createWs(port) {
       connect++
       sendToAll()
     }
+    ws.on('close', () => {
+      clients.splice(clients.findIndex(item => item === ws), 1)
+      console.log('close', clients.length)
+    })
   })
 }
 
@@ -58,7 +62,7 @@ export default ({port, app, watchs = []}) => {
         })
     })
   }
-  
+
   return (req, res, next) => {
     res.render = (path) => {
       app.render(path,
