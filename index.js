@@ -3,7 +3,7 @@ import routers from './routers'
 import path from 'path'
 import morgan from 'morgan'
 import lessMiddleware from 'less-middleware'
-import AutoReload from './auto-reload'
+import AutoReload from 'views-auto-reload'
 const app = express()
 
 app.set('views', path.join(__dirname, 'views'))
@@ -15,7 +15,7 @@ app.use(lessMiddleware(path.join(__dirname, 'styles'), {
 }))
 app.use(express.static('styles'))
 app.use(express.static('scripts'))
-app.use(AutoReload({port: 39999, app: app, watchs: ['.less', '.jade']}))
+app.use(AutoReload(app, {suffix: ['.less', '.jade']}))
 
 routers(app)
 
