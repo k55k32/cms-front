@@ -4,6 +4,7 @@ html
     link(rel="stylesheet" href="index.css" type="text/css")
     link(rel="stylesheet" href="article.css" type="text/css")
   body
-    h1 my blog
-    each article in data
-      include ./article/article-item.pug
+    .container
+      h1 Title
+      each article in data
+        include ./article/article-item.pug
