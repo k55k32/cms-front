@@ -1,0 +1,23 @@
+@import "./global.less";
+.article-item{
+  padding: 100px 0;
+  border-bottom: @border;
+  text-align: center;
+  .title{
+    font-size: @title;
+  }
+  .date{
+    margin-top: @margin-size;
+  }
+  .content {
+    font-size: @font-size;
+    width: 50vw;
+    margin: auto;
+    margin-top: @margin-size;
+    text-align: left;
+  }
+  &:hover{
+    box-shadow: 0px 0px 10px #ccc;
+    cursor: pointer;
+  }
+}
