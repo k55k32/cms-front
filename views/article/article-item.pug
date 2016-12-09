@@ -1,5 +1,13 @@
 .article-item
-  p.title= article.title
-  p.date= article.createTime
+  .title-wrapper
+    p.title= article.title
   p.content= article.content
-  p= article.createTime
+  .footer-wrapper
+    p #{dateformat(article.createTime, 'yyyy-mm-dd HH:ss')}
+
+.article-item
+  .title-wrapper.img(style="background:url(img/banner.jpg)")
+    p.title= article.title
+  p.content= article.content
+  .footer-wrapper
+    p #{dateformat(article.createTime, 'yyyy-mm-dd HH:ss')}
