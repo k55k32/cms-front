@@ -1,0 +1,17 @@
+extends ../layout.pug
+
+block head
+  link(rel="stylesheet" href="/article-detail.css" type="text/css")
+
+block content
+  .container
+    - var gb = banner && {'style': `background-image: url(${banner})`}
+    .article-detail
+      .detail-banner(class={banner: banner})&attributes(gb)
+        p.title= title
+        p.time= date(createTime)
+        p= catalogName
+      .content.markdown-body
+        p!= markdown(content)
+      p= 'next: ' + nextTitle
+      p= 'before: ' + beforeTitle

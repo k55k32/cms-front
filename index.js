@@ -6,7 +6,10 @@ import lessMiddleware from 'less-middleware'
 import AutoReload from 'views-auto-reload'
 import request from './api/request.js'
 import Helpers from './util/Helpers'
-request('http://localhost:8889/')
+
+// request('http://localhost:8889/')
+
+request('http://42.96.203.79:8080/')
 
 const app = express()
 

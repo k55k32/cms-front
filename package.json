@@ -25,7 +25,9 @@
     "express": "^4.14.0",
     "less-middleware": "^2.2.0",
     "morgan": "^1.7.0",
-    "pug": "^2.0.0-beta6"
+    "pug": "^2.0.0-beta6",
+    "highlightjs": "^9.8.0",
+    "markdown-it": "^8.1.0"
   },
   "devDependencies": {
     "views-auto-reload": "^1.0.7"

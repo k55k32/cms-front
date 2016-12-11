@@ -1,15 +1,25 @@
 @import "./global.less";
 body {
-  background: @background;
-  font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-family: -apple-system,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
   font-size: @font-size;
+  background: @background;
+  line-height: 2;
 }
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .container{
-  width: 1280px;
+  max-width: 1024px;
   margin: auto;
+}
+.banner{
+  color: #fff;
+  background-size:cover
+}
+a {
+  color: inherit;
+  text-decoration: none;
 }

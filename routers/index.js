@@ -6,4 +6,9 @@ export default (app) => {
       res.render('index', result.data)
     })
   })
+  app.get('/article/:id', (req, res) => {
+    $get('article/detail/' + req.params.id).then(({data}) => {
+      res.render('article/index', data)
+    })
+  })
 }

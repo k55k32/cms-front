@@ -19,31 +19,33 @@
       margin-top: @item-padding / 8;
       background: #eee;
     }
-    &.img{
+    &.banner{
       &:after{
         display: none;
       }
-      color: #fff;
     }
   }
   .title{
     font-size: @title;
   }
   .footer-wrapper{
-    text-align: right;
-    padding: @item-padding / 2;
+    display: flex;
+    justify-content: space-between;
+    padding: @item-padding / 2 @item-padding;
     color: @color-sencond;
   }
-  .content {
-    font-size: @font-size;
-    height: @item-padding;
-    margin-top: @margin-size;
+  .summary {
+    margin-top: @margin-size / 2;
     padding: 0 @item-padding;
     color: darken(@color-sencond, 40%);
-    overflow: hidden;
+    &>a{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+    }
   }
   &:hover{
     box-shadow: 0px 0px 15px #bbb;
-    cursor: pointer;
   }
 }

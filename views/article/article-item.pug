@@ -1,13 +1,16 @@
-.article-item
-  .title-wrapper
-    p.title= article.title
-  p.content= article.content
-  .footer-wrapper
-    p #{dateformat(article.createTime, 'yyyy-mm-dd HH:ss')}
+mixin article(id, text)
+  a(href='article/' + id target="_blank")= text
+
+mixin title(id, text)
+  p.title
+    +article(id, text)
 
 .article-item
-  .title-wrapper.img(style="background:url(img/banner.jpg)")
-    p.title= article.title
-  p.content= article.content
+  - var bg = article.banner && {'style': `background-image: url(${article.banner})`}
+  .title-wrapper(class={banner: article.banner})&attributes(bg)
+    +title(article.id, article.title)
+  p.summary
+    +article(article.id, article.summary)
   .footer-wrapper
-    p #{dateformat(article.createTime, 'yyyy-mm-dd HH:ss')}
+    p.more
+    p= date(article.createTime)
