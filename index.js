@@ -24,17 +24,20 @@ Object.keys(Helpers).forEach(k => {
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 app.use(morgan('dev'))
-app.use(lessMiddleware(path.join(__dirname, 'styles'), {
-  dest: path.join(__dirname, 'styles/css'),
+app.use(lessMiddleware(path.join(__dirname, 'static/styles'), {
+  dest: path.join(__dirname, 'static/styles/css'),
   force: true
 }))
-app.use(express.static('styles'))
-app.use(express.static('styles/css'))
-app.use(express.static('scripts'))
+app.use(express.static('static/styles'))
+app.use(express.static('static/styles/css'))
+app.use(express.static('static/scripts'))
 app.use(AutoReload(app, {suffix: ['.less', '.pug']}))
 
 routers(app)
 
+app.get('*', (req, res) => {
+  res.render('404')
+})
 const port = 3001
 
 app.listen(port, () => console.log('start listen in http://localhost:', port))
