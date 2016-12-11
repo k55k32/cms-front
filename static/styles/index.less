@@ -10,6 +10,10 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 .container{
   max-width: 1024px;
@@ -19,7 +23,14 @@ body {
   color: #fff;
   background-size:cover
 }
-a {
-  color: inherit;
-  text-decoration: none;
+.text-ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
 }
