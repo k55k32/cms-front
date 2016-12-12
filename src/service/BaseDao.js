@@ -24,7 +24,6 @@ function exceptionCatch(e) {
 
 function get (path, data) {
   let url = getUrl(path)
-  console.log('hello', url)
   return HttpClient.get(url, data).catch(exceptionCatch)
 }
 function post (path, data) {
