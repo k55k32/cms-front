@@ -25,7 +25,7 @@ function proessResponse(res, resolve, reject) {
       resolve(data)
     })
   } else {
-    reject(res)
+    reject({HttpRequestException: res})
   }
 }
 function createRequest (opts, resolve, reject) {
@@ -33,7 +33,7 @@ function createRequest (opts, resolve, reject) {
     proessResponse(res, resolve, reject)
   })
   req.on('error', e => {
-    reject(e)
+    reject({ServerException: e})
   })
   return req
 }
