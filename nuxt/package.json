@@ -13,7 +13,7 @@
     "nuxt": "latest"
   },
   "scripts": {
-    "dev": "nuxt",
+    "dev": "babel-node server",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"

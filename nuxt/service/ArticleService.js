@@ -1,4 +1,5 @@
 import dao from './BaseDao'
+import apiConfig from '../server-config'
 
 export default {
   list (currentPage, pageSize) {
@@ -6,5 +7,8 @@ export default {
   },
   get (id) {
     return dao.get('article/detail/' + id)
+  },
+  getRender (id) {
+    return dao.get(apiConfig.proxyApi + 'article-render/' + id)
   }
 }

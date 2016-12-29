@@ -8,7 +8,7 @@
       .tag {{tags}}
     p {{catalogName}}
   .content.markdown-body
-    p(v-html="content")
+    div(v-html="content")
     .more-article
       article-link(:id="beforeId", :text="beforeTitle", name="上一篇", style="text-right")
       .line
@@ -21,11 +21,12 @@ import ArticleLink from '~components/article/ArticleLink'
 export default {
   components: { ArticleLink },
   data ({params}) {
-    return service.get(params.id)
+    return service.getRender(params.id)
   }
 }
 </script>
 
 <style lang="less">
 @import "~assets/less/article-detail.less";
+@import "~assets/css/github-markdown.css";
 </style>
