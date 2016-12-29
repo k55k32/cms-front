@@ -7,7 +7,16 @@
   border-radius: @radius;
   overflow: hidden;
   @item-padding: 7vw;
+
   .title-wrapper{
+    .tag-group{
+      float: right;
+      margin-top: -@item-padding/1.5;
+      .tag{
+        display: inline-block;
+        margin-left: 10px;
+      }
+    }
     padding: @item-padding;
     padding-top: @item-padding * 1.3;
     padding-bottom: @item-padding/ 8;

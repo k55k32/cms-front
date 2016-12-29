@@ -11,9 +11,11 @@ function getUrl(path) {
 
 function exceptionCatch(e) {
   if (e.ServerException) {
+    console.error(e)
     global.currentResponse.render('500', {error: e})
     throw new Error(e)
   } else if (e.HttpRequestException) {
+    console.error(e)
     let res = e.HttpRequestException
     global.currentResponse.render('error', {type: 'HttpRequestException', error: res})
     throw new Error(res)
@@ -24,6 +26,7 @@ function exceptionCatch(e) {
 
 function get (path, data) {
   let url = getUrl(path)
+  console.log(url);
   return HttpClient.get(url, data).catch(exceptionCatch)
 }
 function post (path, data) {

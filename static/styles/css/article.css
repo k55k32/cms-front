@@ -11,6 +11,14 @@
   padding-top: 9.1vw;
   padding-bottom: 0.875vw;
 }
+.article-item .title-wrapper .tag-group {
+  float: right;
+  margin-top: -4.66666667vw;
+}
+.article-item .title-wrapper .tag-group .tag {
+  display: inline-block;
+  margin-left: 10px;
+}
 .article-item .title-wrapper:after {
   content: " ";
   display: block;

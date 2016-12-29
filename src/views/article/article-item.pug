@@ -8,6 +8,9 @@ mixin title(id, text)
 .article-item
   - var bg = article.banner && {'style': `background-image: url(${article.banner})`}
   .title-wrapper(class={banner: article.banner})&attributes(bg)
+    .tag-group
+      each tag in article.tags
+        b.tag= tag.name
     +title(article.id, article.title)
   p.summary
     +article(article.id, article.summary)
