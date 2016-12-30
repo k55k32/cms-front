@@ -5,7 +5,7 @@
     .remark
       .time {{createTime | date}}
       //- .tag(v-for="tag in tags") {{tag.name}}
-      .tag {{tags}}
+      .tag(v-for="tag in tags") {{tag.name}}
     p {{catalogName}}
   .content.markdown-body
     div(v-html="content")
