@@ -1,6 +1,6 @@
 export default [
   {
-    name: 'Blog',
+    name: 'BLOG',
     routerName: 'index'
   }
 ]

@@ -6,6 +6,7 @@ import serverConfig from './server-config'
 import nuxtConfig from './nuxt.config'
 import morgan from 'morgan'
 import compression from 'compression'
+import cors from 'cors'
 const app = express()
 
 
@@ -17,6 +18,8 @@ if (isProd) {
 } else {
   app.use(morgan('dev'))
 }
+
+app.use(cors())
 
 app.get('/article-render/:id', (req, res) => {
   service.get(req.params.id).then(data => {
