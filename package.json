@@ -22,6 +22,6 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development babel-node server",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production babel-node server"
+    "start": "cross-env NODE_ENV=production babel-node server appid=cms-front"
   }
 }
