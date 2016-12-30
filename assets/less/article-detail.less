@@ -1,6 +1,7 @@
 @import './global.less';
 
 @padding: 120px;
+
 .article-detail{
   box-shadow: @shadow;
   background: #fff;
@@ -40,4 +41,22 @@
   padding: @padding/8 0px;
   flex: 1;
   width: 1px;
+}
+
+@media (max-width: 768px) {
+  .markdown-body{
+    font-size: @font-mobile;
+  }
+  .detail-banner{
+    padding: @padding / 8;
+    .title{
+      font-size: 1.4em;
+    }
+  }
+  .content{
+    padding: @padding / 8;
+  }
+  .article-link{
+    padding: @padding / 10 0;
+  }
 }
