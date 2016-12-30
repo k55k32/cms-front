@@ -19,7 +19,8 @@
     "pug": "^2.0.0-beta6"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development babel-node server",
-    "start": "cross-env NODE_ENV=production babel-node server"
+    "dev": "npm run build & cross-env NODE_ENV=development babel-node server",
+    "build": "nuxt build",
+    "start": "npm run build & cross-env NODE_ENV=production babel-node server"
   }
 }
