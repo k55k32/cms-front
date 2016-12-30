@@ -3,7 +3,6 @@
     .container
       .header
         router-link(v-for="m in menus", :to="{name: m.routerName}") {{m.name}}
-
       nuxt
       my-footer
 </template>

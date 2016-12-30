@@ -9,7 +9,7 @@ import compression from 'compression'
 const app = express()
 
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = serverConfig.isProd
 if (isProd) {
   app.use(compression())
   nuxtConfig.dev = false

@@ -1,6 +1,6 @@
 <template lang="pug">
 .article-item
-  .title-wrapper(:class="{banner: article.banner}", :style="{backgroundImg: `url(${article.banner})`}")
+  .title-wrapper(:class="{banner: article.banner}", :style="{backgroundImage: article.banner && `url(${article.banner})`}")
     .tag-group
       b.tag(v-for="tag in article.tags") {{tag.name}}
     p.title
