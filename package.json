@@ -1,44 +1,25 @@
 {
-  "name": "cms-front",
+  "name": "nuxt",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Nuxt.js project",
+  "author": "Diamond <diamondfsd@gmail.com>",
   "private": true,
-  "scripts": {
-    "dev-css": "cross-env NODE_ENV=dev gulp dev",
-    "dev-server": "cross-env NODE_ENV=dev nodemon --exec babel-node index.js",
-    "dev": "start npm run dev-css & npm run dev-server",
-    "build": "cross-env NODE_ENV=build gulp build",
-    "start": "npm run build & babel-node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/k55k32/cms-front.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/k55k32/cms-front/issues"
-  },
-  "homepage": "https://github.com/k55k32/cms-front#readme",
   "dependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-stage-2": "^6.18.0",
+    "axios": "^0.15.3",
+    "compression": "^1.6.2",
     "dateformat": "^2.0.0",
     "express": "^4.14.0",
-    "less-middleware": "^2.2.0",
-    "morgan": "^1.7.0",
-    "pug": "^2.0.0-beta6",
     "highlightjs": "^9.8.0",
-    "markdown-it": "^8.1.0"
+    "markdown-it": "^8.1.0",
+    "nuxt": "latest",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "cross-env": "^3.1.3"
   },
-  "devDependencies": {
-    "cross-env": "^3.1.3",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-less": "^3.3.0",
-    "gulp-minify-css": "^1.2.4",
-    "views-auto-reload": "^1.0.11"
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development babel-node server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production babel-node server",
+    "generate": "nuxt generate"
   }
 }
