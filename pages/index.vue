@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-  h1 title
   article-item(v-for="article in page.data", :article="article")
 </template>
 

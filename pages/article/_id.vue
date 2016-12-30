@@ -22,6 +22,11 @@ export default {
   components: { ArticleLink },
   data ({params}) {
     return service.getRender(params.id)
+  },
+  head () {
+    return {
+      title: this.title
+    }
   }
 }
 </script>
