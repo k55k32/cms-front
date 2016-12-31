@@ -25,8 +25,10 @@ export default {
       })
     }
   },
-  created () {
-    this.logPageView()
+  mounted () {
+    if (document.querySelector('html[n-head-ssr]')) {
+      this.logPageView()
+    }
     this.$router.afterEach((r) => {
       this.logPageView()
     })
