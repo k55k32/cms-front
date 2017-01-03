@@ -3,7 +3,7 @@
   .title-wrapper(:class="{banner: article.banner}", :style="{backgroundImage: article.banner && `url(${article.banner})`}")
     .tag-group
       b.tag(v-for="tag in article.tags") {{tag.name}}
-    p.title
+    h2.title
       router-link(:to="articleLink" target="_blank") {{article.title}}
   p.summary
     router-link(:to="articleLink") {{article.summary}}
@@ -22,6 +22,3 @@ export default {
   }
 }
 </script>
-
-<style lang="css">
-</style>

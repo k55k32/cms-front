@@ -8,10 +8,18 @@ import service from '../service/ArticleService'
 import ArticleItem from '~components/article/ArticleItem'
 export default{
   components: {ArticleItem},
-  data() {
-    return service.list().then(page => {
-      return {page: page}
-    })
+  async data(context) {
+    let page = await service.list()
+    let setting = await context.store.dispatch('loadSetting')
+    return {
+      setting: setting,
+      page: page
+    }
+  },
+  head () {
+    return {
+      title: this.setting['blog-name']
+    }
   }
 }
 </script>

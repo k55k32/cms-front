@@ -1,7 +1,7 @@
 <template lang="pug">
 .article-detail
   .detail-banner(:class="{banner: banner}", :style="{backgroundImage: banner && `url(${banner})`}")
-    p.title {{title}}
+    h1.title {{title}}
     .remark
       .time {{createTime | date}}
       .tag(v-for="tag in tags") {{tag.name}}

@@ -20,8 +20,8 @@ export default {
         fullPath: r.fullPath,
         params: r.params && JSON.stringify(r.params),
         query: r.query && JSON.stringify(r.query)
-      }).then((result, data) => {
-        console.warn('pageview save')
+      }).then((result, error) => {
+        error && console.warn('pageview save error', error)
       })
     }
   },
