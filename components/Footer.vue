@@ -1,5 +1,5 @@
 <template lang="pug">
-footer(v-html="$setting['footer']")
+footer(v-html="$setting('footer')")
 </template>
 
 <script>
