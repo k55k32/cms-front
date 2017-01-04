@@ -10,15 +10,13 @@ export default{
   components: {ArticleItem},
   async data(context) {
     let page = await service.list()
-    let setting = await context.store.dispatch('loadSetting')
     return {
-      setting: setting,
       page: page
     }
   },
   head () {
     return {
-      title: this.$store.state.setting['blog-name']
+      title: this.$setting('blog-name')
     }
   }
 }

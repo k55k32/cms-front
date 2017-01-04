@@ -15,16 +15,20 @@ const store = new Vuex.Store({
   },
   actions: {
     loadSetting ({state, commit}) {
-      if (!Object.keys(state.setting).length) {
-        return service.list().then(setting => {
-          commit('changeSetting', setting)
-          return setting
-        })
-      }
-      return Promise.resolve(state.setting)
+      return service.list().then(setting => {
+        commit('changeSetting', setting)
+        return setting
+      })
+    },
+    async nuxtServerInit ({state}, context) {
+      let result =await context.store.dispatch('loadSetting')
+      return result
     }
   }
 })
-!process.BROWSER_BUILD && store.dispatch('loadSetting')
+
+Vue.prototype.$setting = (key) => {
+  return store.state.setting[key]
+}
 
 export default store

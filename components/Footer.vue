@@ -1,12 +1,9 @@
 <template lang="pug">
-footer(v-html="$store.state.setting['footer']")
+footer(v-html="$setting['footer']")
 </template>
 
 <script>
 export default {
-  created () {
-    this.$store.dispatch('loadSetting')
-  }
 }
 </script>
 
