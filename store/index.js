@@ -25,5 +25,6 @@ const store = new Vuex.Store({
     }
   }
 })
+!process.BROWSER_BUILD && store.dispatch('loadSetting')
 
 export default store

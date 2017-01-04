@@ -3,7 +3,8 @@ module.exports = {
     vendor: ['axios']
   },
   plugins: [
-    '~plugins/filters'
+    '~plugins/filters',
+    '~plugins/pv'
   ],
   /*
   ** Headers of the page

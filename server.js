@@ -7,8 +7,8 @@ import nuxtConfig from './nuxt.config'
 import morgan from 'morgan'
 import compression from 'compression'
 import cors from 'cors'
+import store from './store'
 const app = express()
-
 
 const isProd = serverConfig.isProd
 if (isProd) {
@@ -16,7 +16,11 @@ if (isProd) {
   nuxtConfig.dev = false
   app.use(morgan())
 } else {
-  app.use(morgan('dev'))
+  app.use(morgan('dev', {
+    skip (req, res) {
+      return res.statusCode > 300 && res.statusCode < 400
+    }
+  }))
 }
 
 app.use(cors())

@@ -18,7 +18,7 @@ export default{
   },
   head () {
     return {
-      title: this.setting['blog-name']
+      title: this.$store.state.setting['blog-name']
     }
   }
 }
