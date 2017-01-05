@@ -1,5 +1,5 @@
 import PageViewService from '../service/PageViewService'
-import config from '../nuxt.config.js'
+import config from '../server-config.js'
 
 if (process.BROWSER_BUILD && config.isProd) {
   function logPageView (r) {
@@ -15,7 +15,6 @@ if (process.BROWSER_BUILD && config.isProd) {
   }
 
   window.onNuxtReady(app => {
-    window.test = app
     let route = app.$route
     logPageView(route)
     app.$router.afterEach((r) => {
