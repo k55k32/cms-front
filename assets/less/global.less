@@ -1,5 +1,5 @@
-@background: #eee;
-@border: 1px solid #eee;
+@background: #7d8288;
+@border: 1px solid @background;
 @font-size: 16px;
 @font-mobile: 14px;
 @title: 1.4em;
@@ -9,9 +9,10 @@
 
 @color-first: #333;
 @color-sencond: #bbb;
-@color-header: #898989;
+@color-header: #eee;
+@shadow-color: #52575d;
 
-@shadow:0px 0px 15px #bbb;
+@shadow:0px 0px 15px @shadow-color;
 
 .border(@color: #eee, @size: 1px) {
   border: @size solid @color;

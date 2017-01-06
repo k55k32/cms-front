@@ -11,17 +11,30 @@ function getUrl(path) {
   }
 }
 
-function proessData(response) {
+function proessData(response, e) {
   let result = response.data
   if (result.success) {
     return result.data
   }
+  console.log(result, e)
   throw new Error(`${result.code}:${result.msg}`)
+}
+
+function serialize (data = {}) {
+  let dataStr = ''
+  Object.keys(data).forEach(k => {
+    let value = data[k]
+    if (value !== null && value !== undefined) {
+      dataStr += `${k}=${value}&`
+    }
+  })
+  return dataStr.substr(0, dataStr.length - 1)
 }
 
 function get (path, data) {
   let url = getUrl(path)
-  return axios.get(url, data).then(proessData)
+
+  return axios.get(url + '?' + serialize(data)).then(proessData)
 }
 function post (path, data) {
   let url = getUrl(path)

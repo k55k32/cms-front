@@ -2,8 +2,8 @@ import dao from './BaseDao'
 import apiConfig from '../server-config'
 
 export default {
-  list (currentPage, pageSize) {
-    return dao.page('article/list', currentPage, pageSize)
+  list (currentPage, pageSize, params) {
+    return dao.page('article/list', currentPage, pageSize, params)
   },
   get (id) {
     return dao.get('article/detail/' + id)
