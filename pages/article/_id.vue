@@ -8,6 +8,7 @@
     p {{catalogName}}
   .content.markdown-body
     post-content(:content="content")
+    .update-by LAST UPDATE BY: {{updateTime | date}}
     .more-article
       article-link(:id="beforeId", :text="beforeTitle", name="上一篇", style="text-right")
       .line

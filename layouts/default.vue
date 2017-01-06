@@ -2,7 +2,7 @@
   .app
     .container
       .header
-        router-link(v-for="m in menus", :to="{name: m.routerName}") {{m.name}}
+        router-link(v-for="m in menus", :to="{name: m.routerName}", :class="{'active-link': $route.name === m.routerName}") {{m.name}}
       nuxt
       my-footer
 </template>
@@ -25,11 +25,16 @@ export default {
 <style lang="less">
 @import "~assets/less/global.less";
 .header{
-  padding: 15px 0;
+  text-align: right;
+  padding: 15px 50px;
+  margin-bottom: 1em;
   & > a{
     position: relative;
     font-size: @title;
-    color: @color-first;
+    color: @color-header;
+    & + a{
+      margin-left: 1em;
+    }
     &:before{
       content: " ";
       position: absolute;
@@ -40,7 +45,10 @@ export default {
       background: @color-first;
       transition: all .3s;
     }
-    &:hover:before{
+    &.active-link, &:hover{
+      color: @color-first
+    }
+    &.active-link:before, &:hover:before{
       width: 100%;
       left: 0;
       right: 0;

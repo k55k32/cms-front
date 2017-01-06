@@ -8,8 +8,8 @@
   p.summary
     router-link(:to="articleLink") {{article.summary}}
   .footer-wrapper
-    p.more
-    p {{article.createTime | date}}
+    .update-by CREATE: {{article.createTime | date}}
+    .update-by UPDATE: {{article.updateTime | date}}
 </template>
 
 <script>
