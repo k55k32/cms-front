@@ -1,54 +1,80 @@
 @import "./global.less";
+@item-padding: 100px;
+@item-height: 380px;
+@title-height: 45%;
+@margin-size: 1.4em;
+@mini-height: @item-height * .7;
+@mini-padding: @item-padding * .7;
 .article-item{
   position: relative;
-  margin: auto;
+  height: @item-height;
+  padding: 0px @item-padding;
   background: #fff;
-  margin-bottom: @margin-size;
-  box-shadow: 0px 0 5px 0px @shadow-color;
-  // border-radius: @radius;
-  overflow: hidden;
-  @item-padding: 7vw;
-
+  &.mini{
+    height: @mini-height;
+    padding: 0px @mini-padding;
+    &+&{
+      margin-top: @margin-size * .8;
+    }
+    .title-wrapper{
+      margin: 0 -@mini-padding;
+      padding: 0 @mini-padding;
+    }
+    .footer-wrapper{
+      font-size: .8em;
+    }
+    .summary>a{
+      .line(3);
+    }
+  }
+  
+  &+&{
+    margin-top: @margin-size;
+  }
   .title-wrapper{
+    height: @title-height;
+    margin: 0 -@item-padding;
+    padding: 0 @item-padding;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .tag-group{
-      float: right;
-      margin-top: -@item-padding/1.2;
+      text-align: right;
+      padding-top: 2em;
       .tag{
         font-size: .8em;
       }
     }
-    padding: @item-padding;
-    padding-top: @item-padding * 1.5;
-    padding-bottom: @item-padding/ 8;
-    &:after{
+    .title:after{
       content: " ";
       display: block;
       width: 80px;
       height: 1px;
-      margin-top: @item-padding / 8;
       background: #eee;
     }
     &.banner{
-      &:after{
+      .title:after{
         display: none;
       }
     }
   }
+  .summary-wrapper{
+    height: 100% - @title-height;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.2em 0;
+  }
   .footer-wrapper{
     display: flex;
     justify-content: space-between;
-    padding: @item-padding / 2 @item-padding;
     color: @color-sencond;
+    font-size: .9em;
   }
   .summary {
-    margin-top: @margin-size / 2;
-    padding: 0 @item-padding;
     color: darken(@color-sencond, 40%);
     &>a{
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
-      overflow: hidden;
+      .line(4);
     }
   }
   &:hover{

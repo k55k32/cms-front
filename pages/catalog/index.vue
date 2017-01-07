@@ -5,7 +5,7 @@ div
       router-link.catalog-item(:class="{'active-item': catalogId === (c.id || '-1')}",:to="{name: 'catalog', query: {id: c.id || '-1'}}" v-for="c in catalogs")  {{c.name || '无类别'}} {{c.articleCount}}
     .flex-1
       .article-content
-        article-item(v-for="item in articlesPage.data", :article="item")
+        article-item.mini(v-for="item in articlesPage.data", :article="item")
 </template>
 
 <script>
@@ -44,11 +44,16 @@ export default {
   &+&{
     border-top: 2px solid @item-active;
   }
+  & + &.active-item{
+    border-top: 0px;
+  }
+  &.active-item + &{
+    border-top: 0px;
+  }
   &.active-item{
     background: @item-active;
+    border-left: 4px solid @color-import;
   }
   color: lighten(@background, 20%);
-}
-.article-content{
 }
 </style>

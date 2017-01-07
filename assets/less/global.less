@@ -10,10 +10,17 @@
 @color-first: #333;
 @color-sencond: #bbb;
 @color-header: #eee;
+@color-import: #fa9812;
 @shadow-color: #52575d;
 
 @shadow:0px 0px 15px @shadow-color;
 
 .border(@color: #eee, @size: 1px) {
   border: @size solid @color;
+}
+.line(@number: 4) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @number;
+  overflow: hidden;
 }
