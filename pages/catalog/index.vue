@@ -16,8 +16,8 @@ import articleService from '../../service/ArticleService'
 import ArticleItem from '~components/article/ArticleItem'
 export default {
   components: {ArticleItem},
-  async data ({query: {id, currentpage = 1, pagesize = 10}}) {
-    let catalogs = await service.list()
+  async data ({query: {id, currentpage = 1, pagesize = 10}, store}) {
+    let catalogs = await store.dispatch('loadCatalogs')
     let firstCatalog = catalogs[0]
     if (!id) {
       id = firstCatalog && (firstCatalog.id || '-1')
