@@ -24,7 +24,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    { src: '~assets/less/index.less', lang: 'less'}
+    { src: '~assets/less/index.less', lang: 'less'},
+    { src: 'icono', lang: 'css'}
   ],
   /*
   ** Customize the progress-bar color

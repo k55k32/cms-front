@@ -1,7 +1,9 @@
 <template lang="pug">
 div
   .flex
-    .catalog-items
+    .catalog-menus
+      i.icono-hamburger(@click="menuClick")
+    .catalog-items(@click="menuClick", :class="{'mobile-show': toggleMenu}")
       router-link.catalog-item(:class="{'active-item': catalogId === (c.id || '-1')}",:to="{name: 'catalog', query: {id: c.id || '-1'}}" v-for="c in catalogs")  {{c.name || '无类别'}} {{c.articleCount}}
     .flex-1
       .article-content
@@ -24,7 +26,13 @@ export default {
     return {
       catalogId: id,
       articlesPage: articlesPage,
-      catalogs: catalogs
+      catalogs: catalogs,
+      toggleMenu: false
+    }
+  },
+  methods: {
+    menuClick () {
+      this.toggleMenu = !this.toggleMenu
     }
   }
 }
@@ -36,6 +44,9 @@ export default {
 @item-color: #40464b;
 @item-active: #363d43;
 @item-pd: 22px;
+.catalog-menus{
+  display: none;
+}
 .catalog-item{
   display: block;
   padding: @item-pd;
@@ -55,5 +66,29 @@ export default {
     border-left: 4px solid @color-import;
   }
   color: lighten(@background, 20%);
+}
+@media (max-width: 768px) {
+  .catalog-menus{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: block;
+    z-index: 2;
+  }
+  .catalog-items{
+    display: none;
+    padding-top: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: @background;
+    z-index: 1;
+
+    &.mobile-show{
+      display: block;
+    }
+  }
 }
 </style>
