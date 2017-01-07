@@ -4,7 +4,9 @@ div
     .catalog-menus
       i.icono-hamburger(@click="menuClick")
     .catalog-items(@click="menuClick", :class="{'mobile-show': toggleMenu}")
-      router-link.catalog-item(:class="{'active-item': catalogId === (c.id || '-1')}",:to="{name: 'catalog', query: {id: c.id || '-1'}}" v-for="c in catalogs")  {{c.name || '无类别'}} {{c.articleCount}}
+      router-link.catalog-item(:class="{'active-item': catalogId === (c.id || '-1')}",:to="{name: 'catalog', query: {id: c.id || '-1'}}" v-for="c in catalogs")
+        span{{c.name || '无类别'}}
+        span{{c.articleCount}}
     .flex-1
       .article-content
         article-item.mini(v-for="item in articlesPage.data", :article="item")
@@ -52,6 +54,8 @@ export default {
   padding: @item-pd;
   width: @item-pd * 14;
   background: @item-color;
+  display: flex;
+  justify-content: space-between;
   &+&{
     border-top: 2px solid @item-active;
   }
@@ -85,7 +89,9 @@ export default {
     height: 100%;
     background: @background;
     z-index: 1;
-
+    .catalog-item{
+      width: 100%;
+    }
     &.mobile-show{
       display: block;
     }
