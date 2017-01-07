@@ -5,8 +5,8 @@ div
       i.icono-hamburger(@click="menuClick")
     .catalog-items(@click="menuClick", :class="{'mobile-show': toggleMenu}")
       router-link.catalog-item(:class="{'active-item': catalogId === (c.id || '-1')}",:to="{name: 'catalog', query: {id: c.id || '-1'}}" v-for="c in catalogs")
-        span{{c.name || '无类别'}}
-        span{{c.articleCount}}
+        span {{c.name || '无类别'}}
+        span {{c.articleCount}}
     .flex-1
       .article-content
         article-item.mini(v-for="item in articlesPage.data", :article="item")
