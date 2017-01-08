@@ -26,7 +26,11 @@ export default {
   },
   head () {
     return {
-      title: this.title
+      title: this.title,
+      meta: [
+        { name: 'description', content: this.summary.substr(0, 200) },
+        { name: 'keywords', content: this.tags.map(t => t.name).join(' ') }
+      ]
     }
   }
 }

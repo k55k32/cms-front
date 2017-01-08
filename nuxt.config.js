@@ -14,7 +14,9 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', content: "Nuxt.js project" }
+      { name: 'robots', content: 'all' },
+      { hid: 'description', content: "前端技术博客，前后端技术博客，全桟技术博客，Java，Vue，Nuxt，Html，CSS，Javascript等技术分享 " },
+
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }

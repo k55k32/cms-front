@@ -16,7 +16,10 @@ export default{
   },
   head () {
     return {
-      title: this.$setting('blog-name')
+      title: this.$setting('blog-name'),
+      meta: [
+        {name: 'description', content: this.$setting('meta-description')}
+      ]
     }
   }
 }

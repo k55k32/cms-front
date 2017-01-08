@@ -4,8 +4,8 @@ exports.isProd = isProd
 
 exports.api = isProd ?
     'http://42.96.203.79:8080/' :
-    // 'http://42.96.203.79:8080/'
-    'http://127.0.0.1:8889/'
+    'http://42.96.203.79:8080/'
+    // 'http://127.0.0.1:8889/'
 
 const proxy = {
   protocol: 'http://',
