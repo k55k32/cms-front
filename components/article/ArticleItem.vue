@@ -3,7 +3,7 @@
   .title-wrapper(:class="{banner: article.banner}", :style="article.banner && {backgroundImage: `url(${article.banner})`}")
     .tag-group
       b.tag(v-for="tag in article.tags") {{tag.name}}
-    h2.title
+    h2.title.text-shadow
       router-link(:to="articleLink" target="_blank") {{article.title}}
   .summary-wrapper
     .summary
