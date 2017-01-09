@@ -15,7 +15,7 @@
         label.required 内容:
         textarea.flex-1(v-model="value.content")
   .form-actions
-    input.btn(type="button" value="重置")
+    //- input.btn(type="button" value="重置" @click="")  提个bug，reset不起作用，测试一下
     input.btn(type="submit" value="提交")
 </template>
 
