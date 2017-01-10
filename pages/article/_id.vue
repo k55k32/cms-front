@@ -23,6 +23,7 @@ div
 
 <script>
 import service from '../../service/ArticleService'
+import commentService from '../../service/CommentService'
 import ArticleLink from '~components/article/ArticleLink'
 import CommentForm from '~components/comment/CommentForm'
 import PostContent from '~components/article/PostContent'
@@ -57,6 +58,11 @@ export default {
   methods: {
     submitComment () {
       let form = this.form
+      form.articleId = this.article.id
+      commentService.save(form).then(() => {
+        console.log('add success')
+        this.form.content = ''
+      })
       this.$cacheSet(CACHE_KEY, {
         nickname: form.nickname,
         email: form.email

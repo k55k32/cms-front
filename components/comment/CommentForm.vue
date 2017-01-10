@@ -4,7 +4,7 @@
     .width-100
       .input-group
         label.required 昵称:
-        input(v-model="value.nickname" placeholder="公开" name="nickname" required)
+        input(v-model="value.nickname" placeholder="公开 ( 免注册 ) " name="nickname" required)
     .width-100
       .input-group
         label.required 邮箱:
@@ -13,7 +13,7 @@
     .width-100
       .input-group.top
         label.required 内容:
-        textarea.flex-1(v-model="value.content" placeholder="请输入讨论, 最多512字 ( Markdown Support )" required maxlength="512")
+        textarea.flex-1(v-model="value.content" placeholder="请输入讨论, 最多512字 ( 支持 Markdown 格式 )" required maxlength="512")
         .form-actions
           button.btn.primary(type="submit") 提交讨论
 </template>
