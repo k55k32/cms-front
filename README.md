@@ -14,6 +14,9 @@ $ npm start
 ```
 
 # Change Log
+2017-01-10   
+> TODO comment function
+
 2017-01-10  change `banner` style, the title has shadow now   
 2017-01-06  add `catalog` page, make the mobile style good   
 2017-01-04  add `nuxtServerInit` to `store action`. load setting before page render   

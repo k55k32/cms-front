@@ -17,8 +17,15 @@ div
     .content
       form(type="post", @submit.prevent="submitComment")
         comment-form(v-model="form")
-    .content
-      span list
+    .content(v-if="comments && comments.length")
+      ul.timeline
+        li.timeline-step(v-for="c in comments")
+          .timeline-info
+            .date.comment-time {{c.createTime | date}}
+            .circle
+            //- .comment-nickname
+          .timeline-content
+            p {{c.content}}
 </template>
 
 <script>
@@ -32,7 +39,9 @@ export default {
   components: { ArticleLink, PostContent, CommentForm },
   async data ({params}) {
     let article = await service.getRender(params.id)
+    let comments = await commentService.list(article.id)
     return {
+      comments: comments,
       article: article,
       form: {
         nickname: '',
@@ -75,7 +84,66 @@ export default {
 <style lang="less">
 @import "~assets/less/article-detail.less";
 @import "~assets/css/github-markdown.css";
-.comments{
-  background: #fff;
+@line: #eee;
+@bg: #000;
+// temp http://codepen.io/P233/pen/lGewF/?editors=1100
+.timeline{
+  padding-left: 30px;
+  border-left: 8px solid @line;
+  .timeline-step{
+    margin: 40px 0;
+    position: relative;
+  }
+  .date{
+    margin-top: -10px;
+    top: 50%;
+    left: -158px;
+    font-size: 0.95em;
+    line-height: 20px;
+    position: absolute;
+  }
+  .circle{
+    box-sizing: content-box;
+    margin-top: -10px;
+    top: 50%;
+    left: -44px;
+    width: 10px;
+    height: 10px;
+    background: @color-import;
+    border: 5px solid @line;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+  }
+  .timeline-content{
+    max-height: 20px;
+    padding: 50px 20px 0;
+    border-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 0.5em;
+    position: relative;
+    &:before, &:after{
+      content: "";
+      width: 0;
+      height: 0;
+      border: solid transparent;
+      position: absolute;
+      pointer-events: none;
+      right: 100%;
+    }
+    &:before{
+      border-right-color: inherit;
+      border-width: 20px;
+      top: 50%;
+      margin-top: -20px;
+    }
+    &:after{
+      border-right-color: @bg;
+      border-width: 17px;
+      top: 50%;
+      margin-top: -17px;
+    }
+  }
 }
 </style>
