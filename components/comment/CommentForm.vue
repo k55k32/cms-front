@@ -13,9 +13,9 @@
     .width-100
       .input-group.top
         label.required 内容:
-        textarea.flex-1(v-model="value.content" placeholder="请输入评论 Markdown Support 最多512字" required maxlength="512")
+        textarea.flex-1(v-model="value.content" placeholder="请输入讨论, 最多512字 ( Markdown Support )" required maxlength="512")
         .form-actions
-          button.btn.primary(type="submit") 提交
+          button.btn.primary(type="submit") 提交讨论
 </template>
 
 <script>
@@ -92,7 +92,6 @@ input, textarea{
   }
   &>label{
     width: 80px;
-    padding-left: 15px;
   }
   &>input{
     flex: 1;

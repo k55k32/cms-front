@@ -14,9 +14,11 @@ div
         article-link(:id="article.beforeId", :text="article.beforeTitle", name="上一篇", style="text-right")
         .line
         article-link(:id="article.nextId", :text="article.nextTitle", name="下一篇", style="text-left")
-  .comments
-    form(type="post", @submit.prevent="submitComment")
-      comment-form(v-model="form")
+    .content
+      form(type="post", @submit.prevent="submitComment")
+        comment-form(v-model="form")
+    .content
+      span list
 </template>
 
 <script>
@@ -68,8 +70,6 @@ export default {
 @import "~assets/less/article-detail.less";
 @import "~assets/css/github-markdown.css";
 .comments{
-  padding:15px 100px;
   background: #fff;
-  margin-top: 1.4em;
 }
 </style>
