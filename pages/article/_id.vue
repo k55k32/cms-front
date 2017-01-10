@@ -15,8 +15,8 @@ div
         .line
         article-link(:id="article.nextId", :text="article.nextTitle", name="下一篇", style="text-left")
   .comments
-      form(type="post", @submit.prevent="submitComment")
-        comment-form(v-model="form")
+    form(type="post", @submit.prevent="submitComment")
+      comment-form(v-model="form")
 </template>
 
 <script>
@@ -24,13 +24,18 @@ import service from '../../service/ArticleService'
 import ArticleLink from '~components/article/ArticleLink'
 import CommentForm from '~components/comment/CommentForm'
 import PostContent from '~components/article/PostContent'
+const CACHE_KEY = 'comment-user'
 export default {
   components: { ArticleLink, PostContent, CommentForm },
   async data ({params}) {
     let article = await service.getRender(params.id)
     return {
       article: article,
-      form: {}
+      form: {
+        nickname: '',
+        email: '',
+        content: ''
+      }
     }
   },
   head () {
@@ -42,9 +47,18 @@ export default {
       ]
     }
   },
+  mounted () {
+    if (process.BROWSER_BUILD) {
+      this.form = {...this.form, ...this.$cacheGet(CACHE_KEY)}
+    }
+  },
   methods: {
     submitComment () {
-      console.log(this.form)
+      let form = this.form
+      this.$cacheSet(CACHE_KEY, {
+        nickname: form.nickname,
+        email: form.email
+      })
     }
   }
 }

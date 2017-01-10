@@ -4,7 +4,8 @@ module.exports = {
   },
   plugins: [
     '~plugins/filters',
-    '~plugins/pv'
+    '~plugins/pv',
+    '~plugins/globalMix'
   ],
   /*
   ** Headers of the page
