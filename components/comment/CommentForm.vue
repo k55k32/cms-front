@@ -4,19 +4,18 @@
     .width-100
       .input-group
         label.required 昵称:
-        input(v-model="value.nickname")
+        input(v-model="value.nickname" placeholder="公开" required)
     .width-100
       .input-group
         label.required 邮箱:
-        input(v-model="value.email")
+        input(v-model="value.email" type="email" placeholder="请输入邮箱（博主可能会跟你联系）不公开" required)
   .row
     .width-100
       .input-group.top
         label.required 内容:
-        textarea.flex-1(v-model="value.content")
-  .form-actions
-    //- input.btn(type="button" value="重置" @click="")  提个bug，reset不起作用，测试一下
-    input.btn(type="submit" value="提交")
+        textarea.flex-1(v-model="value.content" placeholder="请输入评论 Markdown Support 最多512字" required maxlength="512")
+        .form-actions
+          button.btn.primary(type="submit") 提交
 </template>
 
 <script>
@@ -32,6 +31,22 @@ export default {
 
 <style lang="less">
 @import "~assets/less/global.less";
+.form-actions{
+  text-align: right;
+  margin-left: @margin-size;
+  align-self: flex-end;
+}
+.btn{
+  .border(1px, @color-input);
+  padding: 15px;
+  background: none;
+  cursor: pointer;
+  &.primary{
+    border-color: @color-import;
+    background: @color-import;
+    color: #fff;
+  }
+}
 .comment-form{
   label{
     color: rgba(0, 0, 0, 0.8);
@@ -63,7 +78,8 @@ label.required{
 }
 input, textarea{
   background: none;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 0;
+  border-bottom: 1px solid @color-input;
   outline: none;
   color: rgba(0, 0, 0, 0.8);
   padding: 10px;
