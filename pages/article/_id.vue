@@ -17,14 +17,13 @@ div
     .content
       form(type="post", @submit.prevent="submitComment")
         comment-form(v-model="form")
-    .content(v-if="comments && comments.length")
-      ul.timeline
-        li.timeline-step(v-for="c in comments")
-          .timeline-info
-            .date.comment-time {{c.createTime | date}}
-            .circle
-            //- .comment-nickname
-          .timeline-content
+    .content.comments(v-if="comments && comments.length")
+      .timeline
+        timeline-step(v-for="c in comments")
+          .comment-date(slot="left") {{c.createTime | date('yyyy-mm-dd')}}
+            .comment-time {{c.createTime | date('hh:mm')}}
+          .comment-info(slot="content")
+            h5 {{c.nickname}}
             p {{c.content}}
 </template>
 
@@ -34,9 +33,10 @@ import commentService from '../../service/CommentService'
 import ArticleLink from '~components/article/ArticleLink'
 import CommentForm from '~components/comment/CommentForm'
 import PostContent from '~components/article/PostContent'
+import TimelineStep from '~components/TimelineStep'
 const CACHE_KEY = 'comment-user'
 export default {
-  components: { ArticleLink, PostContent, CommentForm },
+  components: { ArticleLink, PostContent, CommentForm, TimelineStep },
   async data ({params}) {
     let article = await service.getRender(params.id)
     let comments = await commentService.list(article.id)
@@ -84,65 +84,15 @@ export default {
 <style lang="less">
 @import "~assets/less/article-detail.less";
 @import "~assets/css/github-markdown.css";
-@line: #eee;
-@bg: #000;
-// temp http://codepen.io/P233/pen/lGewF/?editors=1100
-.timeline{
-  padding-left: 30px;
-  border-left: 8px solid @line;
-  .timeline-step{
-    margin: 40px 0;
-    position: relative;
+@import "~assets/less/global.less";
+.comments{
+  .comment-time{
+    text-align: right;
+    font-size: .8em;
   }
-  .date{
-    margin-top: -10px;
-    top: 50%;
-    left: -158px;
-    font-size: 0.95em;
-    line-height: 20px;
-    position: absolute;
-  }
-  .circle{
-    box-sizing: content-box;
-    margin-top: -10px;
-    top: 50%;
-    left: -44px;
-    width: 10px;
-    height: 10px;
-    background: @color-import;
-    border: 5px solid @line;
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-  }
-  .timeline-content{
-    max-height: 20px;
-    padding: 50px 20px 0;
-    border-color: transparent;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 0.5em;
-    position: relative;
-    &:before, &:after{
-      content: "";
-      width: 0;
-      height: 0;
-      border: solid transparent;
-      position: absolute;
-      pointer-events: none;
-      right: 100%;
-    }
-    &:before{
-      border-right-color: inherit;
-      border-width: 20px;
-      top: 50%;
-      margin-top: -20px;
-    }
-    &:after{
-      border-right-color: @bg;
-      border-width: 17px;
-      top: 50%;
-      margin-top: -17px;
+  .comment-info{
+    h5 {
+      margin-bottom: 1em;
     }
   }
 }
