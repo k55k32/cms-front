@@ -11,11 +11,16 @@
 @color-sencond: #bbb;
 @color-header: #eee;
 @color-import: #528bff;
+@color-input: #eee;
 @shadow-color: #52575d;
 
 @shadow:0px 0px 15px @shadow-color;
+@row-padding: 15px;
 
-.border(@color: #eee, @size: 1px) {
+@tree-line: @color-first;
+
+@border-color: #eee;
+.border(@color: @border-color, @size: 1px) {
   border: @size solid @color;
 }
 .line(@number: 4) {

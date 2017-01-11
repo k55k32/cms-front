@@ -3,8 +3,6 @@
 @padding: 110px;
 
 .article-detail{
-  box-shadow: @shadow;
-  background: #fff;
 }
 .detail-banner{
   padding: @padding;
@@ -23,6 +21,10 @@
 }
 .content{
   padding: @padding / 4 @padding;
+  background: #fff;
+  & + &{
+    margin-top: @margin-size;
+  }
 }
 .update-by{
   font-size: .8em;
