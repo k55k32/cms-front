@@ -14,14 +14,15 @@ export default {
 
 <style lang="less">
 @import "~assets/less/global.less";
-@line: @color-input;
+@line: #eee;
 @bg: #000;
 @size: 5px;
 @line-size: 2px;
 @border-size: 5px;
-@date-size: 100px;
+@date-size: 90px;
 @allow-size: 10px;
 @border-line: 1px solid @line;
+@dColor:#fff;
 .square(@size){
   width: @size;
   height: @size;
@@ -34,41 +35,38 @@ export default {
     padding-bottom: @size * 2;
   }
   .timeline-lfet{
-    top: 0px;
     left: -@date-size;
+    margin-top: -@size;
     font-size: 0.9em;
     position: absolute;
+  }
+  @raduis:  @size / 2 + @border-size;
+  @line-width: @raduis * 4;
+  .timeline-info:after{
+    content: " ";
+    display: block;
+    border-bottom: @border-line;
+    position: absolute;
+    top: @raduis - 1px;
+    @left: @size / 2;
+    left: @left;
+    width: @line-width - @left;
   }
   .timeline-info:before{
     content: " ";
     display: block;
-    top: @size;
-    left: -@line-size - (@size + @border-size * 1.5) / 2;
+    left: -@line-size / 2 - @raduis;
     .square(@size);
-    background: @color-import;
+    background: @dColor;
     border:  @border-size solid @line;
     border-radius: 50%;
     position: absolute;
     box-sizing: content-box;
   }
   .timeline-content{
-    margin-left: (@size + @border-size) * 2;
+    margin-left: @line-width;
     position: relative;
     border: @border-line;
-    padding: 15px;
-    &:before{
-      .square(@allow-size);
-      top: @size;
-      content: " ";
-      display: block;
-      border-left: @border-line;
-      border-bottom: @border-line;
-      transform: rotate(45deg);
-      margin-right: -@allow-size/2;
-      position: absolute;
-      background: #fff;
-      right: 100%;
-    }
   }
 }
 </style>
