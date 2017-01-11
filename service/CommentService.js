@@ -4,7 +4,7 @@ export default {
   save (comment) {
     return dao.post('comment', comment)
   },
-  list (articleId) {
-    return dao.page('comment/' + articleId)
+  list (articleId, params) {
+    return dao.get('comment/' + articleId, params)
   }
 }

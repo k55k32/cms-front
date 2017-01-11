@@ -14,15 +14,17 @@ export default {
 
 <style lang="less">
 @import "~assets/less/global.less";
-@line: #eee;
-@bg: #000;
-@size: 5px;
-@line-size: 2px;
-@border-size: 5px;
+@line: @tree-line;
+@size: 10px;
+@line-size: 1px;
+@border-size: 1px;
 @date-size: 90px;
 @allow-size: 10px;
 @border-line: 1px solid @line;
 @dColor:#fff;
+@raduis:  @size / 2 + @border-size;
+@line-width: @raduis * 8;
+
 .square(@size){
   width: @size;
   height: @size;
@@ -32,7 +34,7 @@ export default {
   .timeline-step{
     border-left: @line-size solid @line;
     position: relative;
-    padding-bottom: @size * 2;
+    padding-bottom: 2em;
   }
   .timeline-lfet{
     left: -@date-size;
@@ -40,8 +42,6 @@ export default {
     font-size: 0.9em;
     position: absolute;
   }
-  @raduis:  @size / 2 + @border-size;
-  @line-width: @raduis * 4;
   .timeline-info:after{
     content: " ";
     display: block;

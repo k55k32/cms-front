@@ -19,12 +19,13 @@ div
         comment-form(v-model="form")
     .content.comments(v-if="comments && comments.length")
       .timeline
-        timeline-step(v-for="c in comments")
-          .comment-date(slot="left") {{c.createTime | date('yyyy-mm-dd')}}
-            .comment-time {{c.createTime | date('hh:mm')}}
-          .comment-info(slot="content")
-            .comment-name {{c.nickname}}
-            .comment-content {{c.content}}
+        transition-group(name="list" tag="div")
+          timeline-step(v-for="c in comments", :key="c")
+            .comment-date(slot="left") {{c.createTime | date('yyyy-mm-dd')}}
+              .comment-time {{c.createTime | date('hh:mm:ss')}}
+            .comment-info(slot="content")
+              .comment-name {{c.nickname}}
+              .comment-content {{c.content}}
 </template>
 
 <script>
@@ -68,8 +69,13 @@ export default {
     submitComment () {
       let form = this.form
       form.articleId = this.article.id
-      commentService.save(form).then(() => {
+      commentService.save(form).then(async () => {
         this.form.content = ''
+        let comments = this.comments
+        let newComments = await commentService.list(this.article.id, {
+          lastTime: comments[0] && comments[0].createTime
+        })
+        this.comments.unshift(...newComments)
       })
       this.$cacheSet(CACHE_KEY, {
         nickname: form.nickname,
@@ -84,6 +90,14 @@ export default {
 @import "~assets/less/article-detail.less";
 @import "~assets/css/github-markdown.css";
 @import "~assets/less/global.less";
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-active {
+  opacity: 0;
+  transform: translateX(100%);
+}
+@border-color: @tree-line;
 .comments{
   .comment-time{
     text-align: right;
@@ -96,6 +110,7 @@ export default {
     .comment-name {
       padding:@padding-top @padding-left;
       background: @border-color;
+      color: #fff;
     }
     .comment-content{
       padding: @padding-top @padding-left;
