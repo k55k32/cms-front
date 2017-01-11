@@ -66,7 +66,6 @@ export default {
   .timeline-content{
     margin-left: @line-width;
     position: relative;
-    border: @border-line;
   }
 }
 </style>

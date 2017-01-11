@@ -23,8 +23,8 @@ div
           .comment-date(slot="left") {{c.createTime | date('yyyy-mm-dd')}}
             .comment-time {{c.createTime | date('hh:mm')}}
           .comment-info(slot="content")
-            h5 {{c.nickname}}
-            p {{c.content}}
+            .comment-name {{c.nickname}}
+            .comment-content {{c.content}}
 </template>
 
 <script>
@@ -69,7 +69,6 @@ export default {
       let form = this.form
       form.articleId = this.article.id
       commentService.save(form).then(() => {
-        console.log('add success')
         this.form.content = ''
       })
       this.$cacheSet(CACHE_KEY, {
@@ -91,8 +90,15 @@ export default {
     font-size: .8em;
   }
   .comment-info{
-    h5 {
-      margin-bottom: 1em;
+    @padding-top: 5px;
+    @padding-left: @padding-top * 2;
+    .border();
+    .comment-name {
+      padding:@padding-top @padding-left;
+      background: @border-color;
+    }
+    .comment-content{
+      padding: @padding-top @padding-left;
     }
   }
 }

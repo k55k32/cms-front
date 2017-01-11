@@ -17,7 +17,8 @@
 @shadow:0px 0px 15px @shadow-color;
 @row-padding: 15px;
 
-.border(@color: #eee, @size: 1px) {
+@border-color: #eee;
+.border(@color: @border-color, @size: 1px) {
   border: @size solid @color;
 }
 .line(@number: 4) {
