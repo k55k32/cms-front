@@ -1,6 +1,7 @@
 import Nuxt from 'nuxt'
 import express from 'express'
 import service from  './service/ArticleService'
+import commentService from  './service/CommentService'
 import utils from './utils'
 import serverConfig from './server-config'
 import nuxtConfig from './nuxt.config'
@@ -34,6 +35,18 @@ app.get('/article-render/:id', (req, res) => {
     })
   }).catch(e => e)
 })
+
+app.get('/comments/:articleId', (req, res) => {
+  commentService.list(req.params.articleId, req.query).then(list => {
+    list.forEach(comment => {
+      comment.content = utils.markdown(comment.content)
+    })
+    res.send({
+      success: true,
+      data: list
+    })
+  }).catch(e => e)
+});
 
 const nuxt = new Nuxt(nuxtConfig)
 const promise = (isProd ? Promise.resolve() : nuxt.build())

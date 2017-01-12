@@ -6,5 +6,8 @@ export default {
   },
   list (articleId, params) {
     return dao.get('comment/' + articleId, params)
+  },
+  listRender (articleId, params) {
+    return dao.get('comment/' + articleId, params)
   }
 }

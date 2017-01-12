@@ -40,7 +40,7 @@ export default {
   components: { ArticleLink, PostContent, CommentForm, TimelineStep },
   async data ({params}) {
     let article = await service.getRender(params.id)
-    let comments = await commentService.list(article.id)
+    let comments = await commentService.listRender(article.id)
     return {
       comments: comments,
       article: article,
@@ -72,7 +72,7 @@ export default {
       commentService.save(form).then(async () => {
         this.form.content = ''
         let comments = this.comments
-        let newComments = await commentService.list(this.article.id, {
+        let newComments = await commentService.listRender(this.article.id, {
           lastTime: comments[0] && comments[0].createTime
         })
         this.comments.unshift(...newComments)
