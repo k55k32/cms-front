@@ -4,9 +4,12 @@ import hljs from 'highlightjs'
 const markdownOption = {
   html: true,
   breaks: true,
-  highlight (str, lang = 'javascript') {
+  highlight (str, lang) {
+    lang = lang || 'javascript'
     if (hljs.getLanguage(lang)) {
-      return hljs.highlight(lang, str).value
+      try {
+        return hljs.highlight(lang, str).value
+      } catch (__) {}
     }
     return ''
   }

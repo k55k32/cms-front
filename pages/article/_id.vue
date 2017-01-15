@@ -89,6 +89,7 @@ export default {
 <style lang="less">
 @import "~assets/less/article-detail.less";
 @import "~assets/css/github-markdown.css";
+@import "~assets/css/github.css";
 @import "~assets/less/global.less";
 .list-enter-active, .list-leave-active {
   transition: all 1s;
