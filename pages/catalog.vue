@@ -4,32 +4,32 @@ div
     .catalog-menus
       i.icono-hamburger(@click="menuClick")
     .catalog-items(@click="menuClick", :class="{'mobile-show': toggleMenu}")
-      router-link.catalog-item(:class="{'active-item': catalogId === (c.id || '-1')}",:to="{name: 'catalog', query: {id: c.id || '-1'}}" v-for="c in catalogs")
+      router-link.catalog-item(:class="{'active-item': currentId === c.id}",:to="{name: 'catalog-id', params: {id: c.id}}" v-for="c in catalogs")
         span {{c.name || '无类别'}}
         span {{c.articleCount}}
     .flex-1
-      .article-content
-        article-item.mini(v-for="item in articlesPage.data", :article="item")
+      nuxt-child
 </template>
 
 <script>
-import service from '../../service/CatalogService'
-import articleService from '../../service/ArticleService'
-import ArticleItem from '~components/article/ArticleItem'
+import service from '../service/CatalogService'
+import articleService from '../service/ArticleService'
 export default {
-  components: {ArticleItem},
-  async data ({query: {id, currentpage = 1, pagesize = 10}, store}) {
+  async data ({params, store}) {
     let catalogs = await store.dispatch('loadCatalogs')
-    let firstCatalog = catalogs[0]
-    if (!id) {
-      id = firstCatalog && (firstCatalog.id || '-1')
-    }
-    let articlesPage = await articleService.list(currentpage, pagesize, {catalogId: id})
     return {
-      catalogId: id,
-      articlesPage: articlesPage,
       catalogs: catalogs,
       toggleMenu: false
+    }
+  },
+  computed: {
+    currentId () {
+      let catalogId = this.$route.params.id
+      let catalogs = this.catalogs
+      if (!catalogId && catalogs.length) {
+        catalogId = catalogs[0].id
+      }
+      return catalogId
     }
   },
   methods: {
