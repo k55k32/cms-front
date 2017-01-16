@@ -4,6 +4,18 @@ footer(v-html="$setting('footer')")
 
 <script>
 export default {
+  mounted () {
+    if (process.BROWSER_BUILD) {
+      this.$nextTick(() => {
+        if (this._isMobile()) {
+          require.ensure(['fastclick'], () => {
+            const Fastclick = require('fastclick')
+            Fastclick.attach(document.body)
+          })
+        }
+      })
+    }
+  }
 }
 </script>
 

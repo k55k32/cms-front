@@ -1,5 +1,9 @@
 import Vue from 'vue'
 
+function hasAgent (agent) {
+  return navigator.userAgent.indexOf(agent) > -1
+}
+
 Vue.mixin({
   methods: {
     $cacheGet (key) {
@@ -17,6 +21,15 @@ Vue.mixin({
       } catch (e) {
         console.warn(e)
       }
+    },
+    _isIPhone () {
+      return hasAgent('iPhone')
+    },
+    _isAndroid () {
+      return hasAgent('Android')
+    },
+    _isMobile () {
+      return this._isIPhone() || this._isAndroid()
     }
   }
 })
