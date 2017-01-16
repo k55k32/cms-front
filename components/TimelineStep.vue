@@ -18,7 +18,7 @@ export default {
 @size: 10px;
 @line-size: 1px;
 @border-size: 1px;
-@date-size: 90px;
+@date-size: 0px;
 @allow-size: 10px;
 @border-line: 1px solid @line;
 @dColor:#fff;

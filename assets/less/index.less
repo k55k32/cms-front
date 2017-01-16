@@ -8,6 +8,9 @@ input, textarea, body, button, a, p{
   font-family: -apple-system,"Microsoft YaHei", "Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
   font-weight: 100;
 }
+h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -72,6 +75,12 @@ a {
 @media (max-width: 768px) {
   body{
     font-size: @font-mobile;
+  }
+  input, textarea, body, button, a, p{
+    font-weight: normal;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
   }
   .flex{
     flex-wrap: wrap;

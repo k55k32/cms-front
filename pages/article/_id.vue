@@ -21,11 +21,7 @@ div
       .timeline
         transition-group(name="list" tag="div")
           timeline-step(v-for="c in comments", :key="c")
-            .comment-date(slot="left") {{c.createTime | date('yyyy-mm-dd')}}
-              .comment-time {{c.createTime | date('hh:mm:ss')}}
-            .comment-info(slot="content")
-              .comment-name {{c.nickname}}
-              .comment-content {{c.content}}
+            comment-item(slot="content",:comment="c")
 </template>
 
 <script>
@@ -33,11 +29,12 @@ import service from '../../service/ArticleService'
 import commentService from '../../service/CommentService'
 import ArticleLink from '~components/article/ArticleLink'
 import CommentForm from '~components/comment/CommentForm'
+import CommentItem from '~components/comment/CommentItem'
 import PostContent from '~components/article/PostContent'
 import TimelineStep from '~components/TimelineStep'
 const CACHE_KEY = 'comment-user'
 export default {
-  components: { ArticleLink, PostContent, CommentForm, TimelineStep },
+  components: { ArticleLink, PostContent, CommentForm, TimelineStep, CommentItem },
   async data ({params}) {
     let article = await service.getRender(params.id)
     let comments = await commentService.listRender(article.id)
@@ -90,32 +87,11 @@ export default {
 @import "~assets/less/article-detail.less";
 @import "~assets/css/github-markdown.css";
 @import "~assets/css/github.css";
-@import "~assets/less/global.less";
 .list-enter-active, .list-leave-active {
   transition: all 1s;
 }
 .list-enter, .list-leave-active {
   opacity: 0;
-  transform: translateX(100%);
-}
-@border-color: @tree-line;
-.comments{
-  .comment-time{
-    text-align: right;
-    font-size: .8em;
-  }
-  .comment-info{
-    @padding-top: 5px;
-    @padding-left: @padding-top * 2;
-    .border();
-    .comment-name {
-      padding:@padding-top @padding-left;
-      background: @border-color;
-      color: #fff;
-    }
-    .comment-content{
-      padding: @padding-top @padding-left;
-    }
-  }
+  transform: translateY(-100%);
 }
 </style>

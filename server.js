@@ -39,7 +39,7 @@ app.get('/article-render/:id', (req, res) => {
 app.get('/comments/:articleId', (req, res) => {
   commentService.list(req.params.articleId, req.query).then(list => {
     list.forEach(comment => {
-      comment.content = utils.markdown(comment.content)
+      comment.content = utils.markdownSafe(comment.content)
     })
     res.send({
       success: true,

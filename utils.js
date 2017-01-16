@@ -15,6 +15,12 @@ const markdownOption = {
   }
 }
 const md = markdownIt(markdownOption)
+const safe_md = markdownIt({...markdownOption, html: false})
+
+exports.markdownSafe = (text) => {
+  return safe_md.render(text)
+}
+
 exports.markdown = (text) => {
   let result = md.render(text)
   return result

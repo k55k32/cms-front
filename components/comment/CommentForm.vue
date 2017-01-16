@@ -91,7 +91,7 @@ input, textarea{
     align-items: flex-start;
   }
   &>label{
-    width: 80px;
+    margin-right: 10px;
   }
   &>input{
     flex: 1;
