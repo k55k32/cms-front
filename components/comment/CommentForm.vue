@@ -67,7 +67,7 @@ label.required{
 }
 
 .row{
-  margin: 0 -@row-padding;
+  margin: 0 -@row-padding+1;
   &+&{
     margin-top: @margin-size;
   }
