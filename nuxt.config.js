@@ -33,10 +33,5 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#000' },
-  transition: {
-    beforeEnter () {
-      console.log('test')
-    }
-  }
+  loading: { color: '#000' }
 }

@@ -18,7 +18,7 @@
     "less-loader": "^2.2.3",
     "markdown-it": "^8.1.0",
     "morgan": "^1.7.0",
-    "nuxt": "latest",
+    "nuxt": "^0.9.6",
     "pug": "^2.0.0-beta6"
   },
   "scripts": {
