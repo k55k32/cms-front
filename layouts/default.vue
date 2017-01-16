@@ -5,14 +5,16 @@
         router-link(v-for="m in menus", :to="{path: m.path}", :class="{'active-link': $route.name === m.routerName}") {{m.name}}
       nuxt
       my-footer
+      scroll-to-top
 </template>
 
 <script>
 import MyFooter from '~components/Footer.vue'
+import ScrollToTop from '~components/ScrollToTop.vue'
 import menus from './menus'
 export default {
   components: {
-    MyFooter
+    MyFooter, ScrollToTop
   },
   data () {
     return {

@@ -9,7 +9,6 @@ export default {
     return dao.get('comment/' + articleId, params)
   },
   listRender (articleId, params) {
-    console.log(articleId);
     return dao.get(apiConfig.proxyApi + 'comments/' + articleId, params)
   }
 }

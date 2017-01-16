@@ -19,6 +19,7 @@ $ npm start
   2. comment support `markdown`.   
   3. mobile scale set in 1
   4. change the catalog-router to `Nested Router`
+  5. add scroll to top button
 
 2017-01-11  add comment function, now you can do comment in the article detail   
 2017-01-10  change `banner` style, the title has shadow now   
