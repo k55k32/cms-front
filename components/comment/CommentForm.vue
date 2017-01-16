@@ -67,7 +67,7 @@ label.required{
 }
 
 .row{
-  margin: 0 -@row-padding;
+  margin: 0 -@row-padding+1;
   &+&{
     margin-top: @margin-size;
   }
@@ -91,7 +91,7 @@ input, textarea{
     align-items: flex-start;
   }
   &>label{
-    width: 80px;
+    margin-right: 10px;
   }
   &>input{
     flex: 1;
