@@ -16,6 +16,7 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1,minimum-scale=1' },
       { name: 'robots', content: 'all' },
+      { name: 'google-site-verification', content: 'AAn7ytrW1oeOgRWa64TqqBvnlIzRkMJBddIjE44aSVc' },
       { hid: 'description', content: "前端技术博客，前后端技术博客，全桟技术博客，Java，Vue，Nuxt，Html，CSS，Javascript等技术分享 " },
 
     ],
