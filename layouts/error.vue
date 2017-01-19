@@ -1,5 +1,5 @@
 <template lang="pug">
-.div {{ error.statusCode }}  {{ error.message }}
+.div {{ error }}
   div something errr
 </template>
 <script>

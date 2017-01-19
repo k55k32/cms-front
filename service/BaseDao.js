@@ -16,8 +16,8 @@ function proessData(response, e) {
   if (result.success) {
     return result.data
   }
-  console.log(result, e)
-  throw new Error(`${result.code}:${result.msg}`)
+  console.log('basedao error: ', result, e)
+  throw result || e
 }
 
 function serialize (data = {}) {

@@ -9,6 +9,7 @@ import morgan from 'morgan'
 import compression from 'compression'
 import cors from 'cors'
 import store from './store'
+import sm from 'sitemap'
 const app = express()
 
 const isProd = serverConfig.isProd
@@ -33,7 +34,9 @@ app.get('/article-render/:id', (req, res) => {
       success: true,
       data: data
     })
-  }).catch(e => e)
+  }).catch(e => {
+    res.send(e)
+  })
 })
 
 app.get('/comments/:articleId', (req, res) => {
@@ -45,8 +48,31 @@ app.get('/comments/:articleId', (req, res) => {
       success: true,
       data: list
     })
-  }).catch(e => e)
-});
+  }).catch(e => res.send(e))
+})
+
+const host = 'http://diamondfsd.com'
+app.get('/sitemap.xml', (req, res) => {
+  service.allNames().then(data => {
+    let smOption = {
+      hostname: host,
+      cacheTime: 600000,
+      urls: [host]
+    }
+    data.forEach(art => {
+      smOption.urls.push({
+        url: `/article/${art.id}`,
+        changefreq: 'daily',
+        lastmod: new Date(art.updateTime)
+      })
+    })
+    let xml = sm.createSitemap(smOption).toString()
+    res.header('Content-Type', 'application/xml')
+    res.send(xml)
+  }).catch(e => {
+    res.send(e)
+  })
+})
 
 const nuxt = new Nuxt(nuxtConfig)
 const promise = (isProd ? Promise.resolve() : nuxt.build())

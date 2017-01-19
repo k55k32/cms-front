@@ -10,5 +10,8 @@ export default {
   },
   getRender (id) {
     return dao.get(apiConfig.proxyApi + 'article-render/' + id)
+  },
+  allNames () {
+    return dao.get('article/article-map')
   }
 }
