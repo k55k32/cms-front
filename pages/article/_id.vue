@@ -7,7 +7,7 @@ section.article-detail
       .tag(v-for="tag in article.tags") {{tag.name}}
     p {{article.catalogName}}
   article.content.markdown-body
-    post-content(:content="article.content")
+    post-content(:content="article.content" ref="postContent")
     footer.update-by LAST UPDATE BY: {{article.updateTime | date}}
     .more-article
       article-link(:id="article.beforeId", :text="article.beforeTitle", name="上一篇", style="text-right")
