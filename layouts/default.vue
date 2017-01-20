@@ -1,7 +1,7 @@
 <template lang="pug">
   .app
     .container
-      .header
+      nav.header
         router-link(v-for="m in menus", :to="{path: m.path}", :class="{'active-link': $route.name === m.routerName}") {{m.name}}
       nuxt
       my-footer

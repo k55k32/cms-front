@@ -3,7 +3,7 @@ div
   .flex
     .catalog-menus
       i.icono-hamburger(@click="menuClick")
-    .catalog-items(@click="menuClick", :class="{'mobile-show': toggleMenu}")
+    nav.catalog-items(@click="menuClick", :class="{'mobile-show': toggleMenu}")
       router-link.catalog-item(:class="{'active-item': currentId === c.id}",:to="{name: 'catalog-id', params: {id: c.id}}" v-for="c in catalogs")
         span {{c.name || '无类别'}}
         span {{c.articleCount}}

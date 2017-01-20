@@ -1,5 +1,5 @@
 <template lang="pug">
-footer(v-html="$setting('footer')")
+footer.index(v-html="$setting('footer')")
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="less">
-footer{
+footer.index{
   padding: 15px 0;
   color: #ccc;
   font-size: .8em;
