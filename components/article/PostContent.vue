@@ -10,24 +10,21 @@ export default {
       this.buildContent()
     }
   },
-  data () {
-    return {
-      titles: []
-    }
-  },
   methods: {
     buildContent () {
-      this.linkTarget()
-      this.hTagLink()
+      this.$nextTick(() => {
+        this.linkTarget()
+        this.hTagLink()
+      })
     },
     hTagLink () {
       let titles = []
       this.$refs.content.querySelectorAll('h2,h1').forEach(h => {
-        let item = h.innerHTML
+        let item = h.innerText
         h.setAttribute('id', item)
         titles.push(item)
       })
-      this.titles = titles
+      this.$emit('build', titles)
     },
     linkTarget () {
       this.$refs.content.querySelectorAll('a[href^="http://"],a[href^="https://"]').forEach((a) => {
@@ -36,10 +33,7 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      window.document.querySelectorAll('base')[0].remove()
-      this.buildContent()
-    })
+    this.buildContent()
   }
 }
 </script>

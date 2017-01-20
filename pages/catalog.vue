@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.container
   .flex
     .catalog-menus
       i.icono-hamburger(@click="menuClick")

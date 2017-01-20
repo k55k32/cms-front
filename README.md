@@ -14,13 +14,16 @@ $ npm start
 ```
 
 # Change Log
+2017-01-20 update   
+  1. add title-nav in article-detail #5
+  2. semantization html tag
 2017-01-16 update
   1. change comments style.  fixed #2
   2. comment support `markdown`.   
   3. mobile scale set in 1
   4. change the catalog-router to `Nested Router`
   5. add scroll to top button
-  6. add `fastclick` in mobile 
+  6. add `fastclick` in mobile
 
 2017-01-11  add comment function, now you can do comment in the article detail   
 2017-01-10  change `banner` style, the title has shadow now   

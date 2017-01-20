@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+.container
   article-item(v-for="article in page.data", :article="article")
 </template>
 

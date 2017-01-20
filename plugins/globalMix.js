@@ -29,7 +29,7 @@ Vue.mixin({
       return hasAgent('Android')
     },
     _isMobile () {
-      return this._isIPhone() || this._isAndroid()
+      return process.BROWSER_BUILD && (this._isIPhone() || this._isAndroid())
     }
   }
 })

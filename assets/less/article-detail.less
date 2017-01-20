@@ -1,15 +1,22 @@
 @import './global.less';
 
 @padding: 110px;
-
+@banner-heigth: 300px;
 .article-detail{
 }
 .detail-banner{
-  padding: @padding;
+  padding: 0 @padding;
   background-color: #f6f6f6;
   position: relative;
+  height: @banner-heigth;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .title{
     font-size: 2em;
+    margin-bottom: 10px;
+    word-break:break-all;
+    word-break: break-all;
   }
   .remark{
     display: flex;

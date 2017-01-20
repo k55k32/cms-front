@@ -1,11 +1,10 @@
 <template lang="pug">
   .app
-    .container
-      nav.header
-        router-link(v-for="m in menus", :to="{path: m.path}", :class="{'active-link': $route.name === m.routerName}") {{m.name}}
-      nuxt
-      my-footer
-      scroll-to-top
+    nav.header.container
+      router-link(v-for="m in menus", :to="{path: m.path}", :class="{'active-link': $route.name === m.routerName}") {{m.name}}
+    nuxt
+    my-footer.container
+    scroll-to-top
 </template>
 
 <script>
