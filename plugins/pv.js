@@ -8,7 +8,8 @@ if (process.BROWSER_BUILD && config.isProd) {
       path: r.path,
       fullPath: r.fullPath,
       params: r.params && JSON.stringify(r.params),
-      query: r.query && JSON.stringify(r.query)
+      query: r.query && JSON.stringify(r.query),
+      userAgent: window.navigator.userAgent
     }).then((result, error) => {
       error && console.warn('pageview save error', error)
     })
