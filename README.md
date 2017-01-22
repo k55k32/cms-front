@@ -14,6 +14,10 @@ $ npm start
 ```
 
 # Change Log
+2017-01-22 replace all `http` resource to `https`  
+> UPDATE c_article SET content = REPLACE(content, 'http://42.96.203.79:22222/file', 'https://file.diamondfsd.com/img')
+> UPDATE c_article SET banner = REPLACE(banner, 'http://42.96.203.79:22222/file', 'https://file.diamondfsd.com/img')
+
 2017-01-20 update   
   1. add title-nav in article-detail #5
   2. semantization html tag
