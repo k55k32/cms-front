@@ -50,7 +50,7 @@ app.get('/comments/:articleId', (req, res) => {
   }).catch(e => res.send(e))
 })
 
-const host = 'http://diamondfsd.com'
+const host = serverConfig.proxy.protocol + serverConfig.proxy.host
 app.get('/sitemap.xml', (req, res) => {
   service.allNames().then(data => {
     let smOption = {
