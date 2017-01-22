@@ -3,14 +3,14 @@ const isProd = process.env.NODE_ENV === 'production';
 exports.isProd = isProd
 
 exports.api = isProd ?
-    'http://42.96.203.79:8080/' :
-    // 'http://42.96.203.79:8080/'
-    'http://127.0.0.1:8889/'
+    'https://api.diamondfsd.com' :
+    'http://api.diamondfsd.com'
+    // 'http://127.0.0.1:8889/'
 
 const proxy = {
-  protocol: 'http://',
-  host: isProd ? '42.96.203.79' : 'localhost',
-  port: 3999
+  protocol: isProd ? 'https://' : 'http://',
+  host: isProd ? 'diamondfsd.com' : 'localhost',
+  port: isProd ? 3999 : 80
 }
 exports.proxy = proxy
 
