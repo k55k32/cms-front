@@ -8,7 +8,6 @@ import nuxtConfig from './nuxt.config'
 import morgan from 'morgan'
 import compression from 'compression'
 import cors from 'cors'
-import store from './store'
 import sm from 'sitemap'
 const app = express()
 

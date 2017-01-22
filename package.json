@@ -24,7 +24,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development babel-node server",
-    "build": "nuxt build",
+    "build": "nuxt build & rm -rf babel-build & babel *.js --out-dir babel-build & babel service --out-dir babel-build/service",
     "start": "cross-env NODE_ENV=production babel-node server appid=cms-front"
   }
 }
