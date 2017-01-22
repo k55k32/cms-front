@@ -78,8 +78,8 @@ const nuxt = new Nuxt(nuxtConfig)
 const promise = (isProd ? Promise.resolve() : nuxt.build())
 promise.then(() => {
   app.use(nuxt.render)
-  app.listen(serverConfig.proxy.port)
-  console.log(`Server is listening on http://${serverConfig.proxy.host}:${serverConfig.proxy.port}`)
+  app.listen(serverConfig.serverPort)
+  console.log(`Server is listening on :::${serverConfig.serverPort} `)
 })
 .catch((error) => {
   console.error(error)
