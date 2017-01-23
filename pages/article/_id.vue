@@ -57,7 +57,7 @@ export default {
     return {
       title: this.article.title,
       meta: [
-        { name: 'description', content: this.article.summary.substr(0, 200) },
+        { name: 'description', content: this.tagNames + this.article.summary.substr(0, 200) },
         { name: 'keywords', content: this.article.tags.map(t => t.name).join(' ') }
       ]
     }
