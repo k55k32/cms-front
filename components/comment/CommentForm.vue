@@ -57,44 +57,4 @@ export default {
     outline: none;
   }
 }
-
-label.required{
-  &:after{
-    content: "*";
-    color: @color-import;
-    margin-left: 8px;
-  }
-}
-
-.row{
-  margin: 0 -@row-padding+1;
-  &+&{
-    margin-top: @margin-size;
-  }
-}
-.width-100{
-  width: 100%;
-  padding: 0px @row-padding;
-}
-input, textarea{
-  background: none;
-  border: 0;
-  border-bottom: 1px solid @color-input;
-  outline: none;
-  color: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-}
-.input-group{
-  display: flex;
-  align-items: center;
-  &.top{
-    align-items: flex-start;
-  }
-  &>label{
-    margin-right: 10px;
-  }
-  &>input{
-    flex: 1;
-  }
-}
 </style>
