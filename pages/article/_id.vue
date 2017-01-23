@@ -3,13 +3,15 @@ section.article-container
   .article-detail
     header.detail-banner(:class="{banner: article.banner}", :style="{backgroundImage: article.banner && `url(${article.banner})`}")
       h1.title.text-shadow {{article.title}}
-      .remark
-        .time {{article.createTime | date}}
-        .tag(v-for="tag in article.tags") {{tag.name}}
-      p {{article.catalogName}}
     article.content.markdown-body(id='article-body')
+      .update-by
+        i.icono-tag
+        span {{tagNames}}
       post-content(:content="article.content", @build="buildTitles")
-      footer.update-by LAST UPDATE BY: {{article.updateTime | date}}
+      footer
+        .flex.flex-between
+          .update-by LAST UPDATE BY: {{article.updateTime | date}}
+          .update-by CREATE BY: {{article.createTime | date}}
       .more-article
         article-link(:id="article.beforeId", :text="article.beforeTitle", name="上一篇", style="text-right")
         .line
@@ -58,6 +60,11 @@ export default {
         { name: 'description', content: this.article.summary.substr(0, 200) },
         { name: 'keywords', content: this.article.tags.map(t => t.name).join(' ') }
       ]
+    }
+  },
+  computed: {
+    tagNames () {
+      return this.article.tags.map(e => e.name).join(',')
     }
   },
   mounted () {

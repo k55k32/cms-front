@@ -6,15 +6,18 @@
 }
 .detail-banner{
   padding: 0 @padding;
-  background-color: #f6f6f6;
+  // background-color: #f6f6f6;
+  color:#fff;
   position: relative;
-  height: @banner-heigth;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: @banner-heigth;
+  &.banner{
+    justify-content: flex-end;
+  }
   .title{
     font-size: 2em;
-    margin-bottom: 10px;
     word-break:break-all;
     word-break: break-all;
   }
@@ -36,6 +39,10 @@
 .update-by{
   font-size: .8em;
   color: #ddd;
+  i{
+    transform: scale(.6);
+    margin: 0;
+  }
 }
 .more-article{
   color: @color-sencond;
