@@ -62,8 +62,12 @@ export default {
     activityTarget (top) {
       let keys = Object.keys(this.elOffsetTopMap)
       keys.every((oTop, index) => {
-        if (oTop >= top) {
-          this.activity = this.elOffsetTopMap[oTop]
+        if (Math.round(oTop) === Math.round(top)) {
+          this.activity = this.elOffsetTopMap[keys[index]]
+          return false
+        }
+        if (oTop > top) {
+          this.activity = this.elOffsetTopMap[keys[index - 1]]
           return false
         }
         return true

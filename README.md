@@ -14,7 +14,12 @@ $ npm start
 ```
 
 # Change Log
-2017-01-23 update article-detail style great for the banner 
+2017-01-24
+1. add search view #7
+2. add pagination component #4
+3. fixed the article-detail navs
+
+2017-01-23 update article-detail style great for the banner
 2017-01-22 replace all `http` resource to `https`  
 > UPDATE c_article SET content = REPLACE(content, 'http://42.96.203.79:22222/file', 'https://file.diamondfsd.com/img')
 > UPDATE c_article SET banner = REPLACE(banner, 'http://42.96.203.79:22222/file', 'https://file.diamondfsd.com/img')

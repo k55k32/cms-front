@@ -1,4 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /search
+Disallow: /catalog
 Allow: *
 Sitemap: http://diamondfsd.com/sitemap.xml

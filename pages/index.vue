@@ -1,15 +1,15 @@
 <template lang="pug">
 .container
-  article-item(v-for="article in page.data", :article="article")
+  article-list(:page="page")
 </template>
 
 <script>
 import service from '../service/ArticleService'
-import ArticleItem from '~components/article/ArticleItem'
+import ArticleList from '~components/article/ArticleList'
 export default{
-  components: {ArticleItem},
-  async data(context) {
-    let page = await service.list()
+  components: {ArticleList},
+  async data({route: {query: {pageSize, currentPage}}}) {
+    let page = await service.list(currentPage, pageSize)
     return {
       page: page
     }
