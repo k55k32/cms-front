@@ -22,14 +22,13 @@ export default {
   },
   data () {
     return {
-      keyword: '',
+      keyword: this.$route.query.keyword,
       menus: menus
     }
   },
   methods: {
     searchSubmit () {
-      this.$router.push({path: 'search', query: {keyword: this.keyword}})
-      console.log('submit-search', this.keyword)
+      this.$router.push({path: '/search', query: {keyword: this.keyword}})
     }
   }
 }

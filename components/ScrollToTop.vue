@@ -26,7 +26,7 @@ export default {
     },
     startScroll () {
       if (document.body.scrollTop > 0 && this.start) {
-        document.body.scrollTop -= document.body.scrollTop / 60
+        document.body.scrollTop -= document.body.scrollTop / 60 + 10
         this.scrollTimer = setTimeout(() => {
           this.startScroll()
         }, 5)

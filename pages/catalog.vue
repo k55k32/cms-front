@@ -1,11 +1,11 @@
 <template lang="pug">
 .container
   .flex
-    .catalog-menus
-      i.icono-hamburger(@click="menuClick")
+    .catalog-menus(@click="menuClick")
+      i.icono-hamburger
     nav.catalog-items(@click="menuClick", :class="{'mobile-show': toggleMenu}")
       router-link.catalog-item(:class="{'active-item': currentId === c.id}",:to="{name: 'catalog-id', params: {id: c.id}}" v-for="c in catalogs")
-        span {{c.name || '无类别'}}
+        span {{c.name || '未分类'}}
         span {{c.articleCount}}
     .flex-1
       nuxt-child
@@ -22,7 +22,23 @@ export default {
       toggleMenu: false
     }
   },
+  head () {
+    return {
+      title: this.currentCatalog.name || '未分类'
+    }
+  },
   computed: {
+    currentCatalog () {
+      let catalog = {}
+      this.catalogs.every(c => {
+        if (c.id === this.currentId) {
+          catalog = c
+          return false
+        }
+        return true
+      })
+      return catalog
+    },
     currentId () {
       let catalogId = this.$route.params.id
       let catalogs = this.catalogs
@@ -73,22 +89,22 @@ export default {
 }
 @media (max-width: 768px) {
   .catalog-menus{
-    position: absolute;
-    top: 10px;
+    position: fixed;
+    bottom: 10px;
     left: 10px;
     display: block;
     z-index: 2;
   }
   .catalog-items{
     display: none;
-    padding-top: 60px;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: @background;
     z-index: 1;
+    overflow-y: auto;
     .catalog-item{
       width: 100%;
     }

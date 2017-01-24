@@ -21,14 +21,14 @@ function proessData(response, e) {
 }
 
 function serialize (data = {}) {
-  let dataStr = ''
+  let dataStr = []
   Object.keys(data).forEach(k => {
     let value = data[k]
     if (value !== null && value !== undefined) {
-      dataStr += `${k}=${value}&`
+      dataStr.push(`${k}=${encodeURI(value)}`)
     }
   })
-  return dataStr.substr(0, dataStr.length - 1)
+  return dataStr.join('&')
 }
 
 function get (path, data) {
@@ -40,9 +40,9 @@ function post (path, data) {
   let url = getUrl(path)
   return axios.post(url, data).then(proessData)
 }
-function page (path, currentPage = 1, pageCount = 10, data = {}){
+function page (path, currentPage = 1, pageSize = 5, data = {}){
   data.currentPage = currentPage
-  data.pageCount = pageCount
+  data.pageSize = pageSize
   return get(path, data)
 }
 
