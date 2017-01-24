@@ -1,7 +1,7 @@
 <template lang="pug">
 .pagination
   router-link.is-link(:to="{query: pageChange(this.page.currentPage - 1)}", v-show="hasPre") 上一页
-  router-link.is-link(v-for="index in totalPage", :to="{query: pageChange(index)}", :class="{current: index === page.currentPage}") {{index}}
+  router-link.is-link(v-for="index in totalPage", :to="{query: pageChange(index)}", :class="{current: index === page.currentPage}", v-show="totalPage > 1") {{index}}
   router-link.is-link(:to="{query: pageChange(this.page.currentPage + 1)}", v-show="hasNext") 下一页
 </template>
 

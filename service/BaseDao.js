@@ -40,7 +40,7 @@ function post (path, data) {
   let url = getUrl(path)
   return axios.post(url, data).then(proessData)
 }
-function page (path, currentPage = 1, pageSize = 5, data = {}){
+function page (path, currentPage = 1, pageSize = 10, data = {}){
   data.currentPage = currentPage
   data.pageSize = pageSize
   return get(path, data)
