@@ -10,6 +10,9 @@ export default{
   components: {ArticleList},
   async data({route: {query: {pageSize, currentPage}}}) {
     let page = await service.list(currentPage, pageSize)
+    if (page.data.length === 0) {
+      throw new Error('page number error: ' + currentPage)
+    }
     return {
       page: page
     }
