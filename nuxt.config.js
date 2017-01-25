@@ -29,6 +29,7 @@ module.exports = {
   */
   css: [
     { src: '~assets/less/index.less', lang: 'less'},
+    { src: '~assets/less/article.less', lang: 'less'},
     { src: 'icono', lang: 'css'}
   ],
   /*
