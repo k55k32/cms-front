@@ -1,7 +1,7 @@
 {
   "name": "nuxt",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
+  "description": "My blog",
   "author": "Diamond <diamondfsd@gmail.com>",
   "private": true,
   "dependencies": {
