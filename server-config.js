@@ -1,10 +1,8 @@
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production'
 
 exports.isProd = isProd
 
-exports.api = isProd ?
-    'https://api.diamondfsd.com/' :
-    'http://api.diamondfsd.com/'
+exports.api = isProd ? 'https://api.diamondfsd.com/' : 'http://api.diamondfsd.com/'
     // 'http://127.0.0.1:8889/'
 
 exports.serverPort = 3999
@@ -16,4 +14,4 @@ const proxy = {
 }
 exports.proxy = proxy
 
-exports.proxyApi = proxy.protocol + proxy.host + `${proxy.port ? ':' + proxy.port : '' }` + '/'
+exports.proxyApi = proxy.protocol + proxy.host + `${proxy.port ? ':' + proxy.port : ''}` + '/'

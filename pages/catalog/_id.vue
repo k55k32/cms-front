@@ -11,7 +11,7 @@ import Pagination from '~components/Pagination'
 
 export default {
   components: {ArticleItem, Pagination},
-  async data({query: {currentPage, pageSize}, params, store}) {
+  async data ({query: {currentPage, pageSize}, params, store}) {
     let catalogId = params.id
     if (!catalogId) {
       let catalogs = await store.dispatch('loadCatalogs')

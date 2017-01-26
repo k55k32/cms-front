@@ -3,7 +3,7 @@ import serverConfig from '../server-config'
 
 const root = serverConfig.api
 
-function getUrl(path) {
+function getUrl (path) {
   if (path.startsWith('http:') || path.startsWith('https:')) {
     return path
   } else {
@@ -11,7 +11,7 @@ function getUrl(path) {
   }
 }
 
-function proessData(response, e) {
+function proessData (response, e) {
   let result = response.data
   if (result.success) {
     return result.data
@@ -40,7 +40,7 @@ function post (path, data) {
   let url = getUrl(path)
   return axios.post(url, data).then(proessData)
 }
-function page (path, currentPage = 1, pageSize = 10, data = {}){
+function page (path, currentPage = 1, pageSize = 10, data = {}) {
   data.currentPage = currentPage
   data.pageSize = pageSize
   return get(path, data)

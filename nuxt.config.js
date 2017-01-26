@@ -1,6 +1,32 @@
 module.exports = {
   build: {
-    vendor: ['axios']
+    vendor: ['axios'],
+    extend (config, {isServer}) {
+      if (isServer) {
+        var path = require('path')
+        var projectRoot = path.resolve(__dirname, './')
+        var eslint = [
+          {
+            test: /\.vue$/,
+            loader: 'eslint-loader',
+            include: projectRoot,
+            exclude: /node_modules/
+          },
+          {
+            test: /\.js$/,
+            loader: 'eslint-loader',
+            include: projectRoot,
+            exclude: /(node_modules|assets)/
+          }
+        ]
+        const lintFormat = require('eslint-friendly-formatter')
+        eslint.forEach(lint => {
+          lint.enforce = 'pre'
+          // lint.query = {formatter: lintFormat}
+          config.module.rules.unshift(lint)
+        })
+      }
+    }
   },
   plugins: [
     '~plugins/filters',

@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import service from '../service/CatalogService'
-import articleService from '../service/ArticleService'
 export default {
   async data ({params, store}) {
     let catalogs = await store.dispatch('loadCatalogs')

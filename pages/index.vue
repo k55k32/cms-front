@@ -8,7 +8,7 @@ import service from '../service/ArticleService'
 import ArticleList from '~components/article/ArticleList'
 export default{
   components: {ArticleList},
-  async data({route: {query: {pageSize, currentPage}}}) {
+  async data ({route: {query: {pageSize, currentPage}}}) {
     let page = await service.list(currentPage, pageSize)
     if (page.data.length === 0) {
       throw new Error('page number error: ' + currentPage)

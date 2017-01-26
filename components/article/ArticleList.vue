@@ -7,7 +7,6 @@ div
 <script>
 import ArticleItem from './ArticleItem'
 import Pagination from '../Pagination'
-import articleService from '../../service/ArticleService'
 export default {
   components: {Pagination, ArticleItem},
   props: ['page', 'params']

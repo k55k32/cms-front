@@ -35,7 +35,7 @@ const store = new Vuex.Store({
       return Promise.resolve(state.catalogs)
     },
     async nuxtServerInit ({state}, context) {
-      let result =await context.store.dispatch('loadSetting')
+      let result = await context.store.dispatch('loadSetting')
       return result
     }
   }

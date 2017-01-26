@@ -5,7 +5,6 @@ aside.article-nav.is-link
 </template>
 
 <script>
-
 function offsetTop (el) {
   if (!el) return 0
   if (el.offsetParent) {
@@ -24,7 +23,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       if (!this.$el.clientHeight) return
-      let body  = window.document.body
+      let body = window.document.body
       let ul = this.$refs.ul
       let ulTop = offsetTop(ul)
       window.document.addEventListener('scroll', (e) => {
