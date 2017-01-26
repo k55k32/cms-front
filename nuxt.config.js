@@ -1,18 +1,20 @@
 module.exports = {
   build: {
     vendor: ['axios'],
-    extend (config, {isServer}) {
-      if (isServer) {
+    extend (config, {isDev, isServer}) {
+      if (isDev && isServer) {
         var path = require('path')
         var projectRoot = path.resolve(__dirname, './')
         var eslint = [
           {
+            enforce: 'pre',
             test: /\.vue$/,
             loader: 'eslint-loader',
             include: projectRoot,
             exclude: /node_modules/
           },
           {
+            enforce: 'pre',
             test: /\.js$/,
             loader: 'eslint-loader',
             include: projectRoot,
@@ -21,8 +23,7 @@ module.exports = {
         ]
         const lintFormat = require('eslint-friendly-formatter')
         eslint.forEach(lint => {
-          lint.enforce = 'pre'
-          // lint.query = {formatter: lintFormat}
+          lint.query = {formatter: lintFormat}
           config.module.rules.unshift(lint)
         })
       }
