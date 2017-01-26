@@ -1,8 +1,8 @@
 module.exports = {
   build: {
     vendor: ['axios'],
-    extend (config, {isDev, isServer}) {
-      if (isDev && isServer) {
+    extend (config, { dev, isServer }) {
+      if (dev && isServer) {
         var path = require('path')
         var projectRoot = path.resolve(__dirname, './')
         var eslint = [

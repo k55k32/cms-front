@@ -8,6 +8,9 @@ section.article-container
         i.icono-tag
         span {{tagNames}}
       post-content(:content="article.content", @build="buildTitles")
+      .article-qrcode
+        img(ref="qrcode")
+        span 文章二维码
       footer
         .flex.flex-between
           .update-by LAST UPDATE BY: {{article.updateTime | date}}
@@ -50,7 +53,8 @@ export default {
         nickname: '',
         email: '',
         content: ''
-      }
+      },
+      qrCode: ''
     }
   },
   head () {
@@ -72,7 +76,27 @@ export default {
       this.form = {...this.form, ...this.$cacheGet(CACHE_KEY)}
     }
   },
+  created () {
+    this.buildQrcode()
+  },
+  watch: {
+    $route () {
+      this.buildQrcode()
+    }
+  },
   methods: {
+    buildQrcode () {
+      if (process.BROWSER_BUILD) {
+        this.$nextTick(() => {
+          const jrQrcode = require('jr-qrcode')
+          let base64 = jrQrcode.getQrBase64(window.location.href, {
+            correctLevel: 1,
+            foreground: '#7d8288'
+          })
+          this.$refs.qrcode.src = base64
+        })
+      }
+    },
     buildTitles (titles) {
       titles.unshift({
         target: 'article-body',
@@ -124,6 +148,13 @@ export default {
   .article-nav{
     flex: 1;
     margin-top: @banner-heigth;
+  }
+}
+.article-qrcode{
+  text-align: center;
+  &>img{
+    margin:auto;
+    display: block;
   }
 }
 @media (min-width: 1500px) {
