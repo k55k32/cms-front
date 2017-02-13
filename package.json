@@ -19,7 +19,7 @@
     "less-loader": "^2.2.3",
     "markdown-it": "^8.1.0",
     "morgan": "^1.7.0",
-    "nuxt": "^0.9.6",
+    "nuxt": "^0.9.9",
     "pug": "^2.0.0-beta6",
     "sitemap": "^1.9.0"
   },
