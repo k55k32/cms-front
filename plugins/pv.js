@@ -1,22 +1,25 @@
 import PageViewService from '../service/PageViewService'
 import config from '../server-config.js'
 
-const logPageView = (r, userAgent) => {
+const logPageView = (r) => {
   PageViewService.save({
     name: r.name,
     path: r.path,
     fullPath: r.fullPath,
     params: r.params && JSON.stringify(r.params),
     query: r.query && JSON.stringify(r.query),
-    userAgent: userAgent
+    userAgent: window.navigator.userAgent
   }).then((result, error) => {
     error && console.warn('pageview save error', error)
   })
 }
 
-export default function ({isServer, route, req}) {
-  let userAgent = isServer ? req.headers['user-agent'] : window.navigator.userAgent
-  if (config.isProd) {
-    logPageView(route, userAgent)
-  }
+if (process.BROWSER_BUILD && config.isProd) {
+  window.onNuxtReady(app => {
+    let route = app.$route
+    logPageView(route)
+    app.$router.afterEach((r) => {
+      logPageView(r)
+    })
+  })
 }
