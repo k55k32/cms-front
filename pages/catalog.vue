@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style lang="less">
-@import "../../assets/less/global.less";
+@import "~assets/less/global.less";
 @item-color: #40464b;
 @item-active: #363d43;
 @item-pd: 22px;

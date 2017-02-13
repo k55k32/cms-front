@@ -31,9 +31,11 @@ module.exports = {
   },
   plugins: [
     '~plugins/filters',
-    '~plugins/pv',
     '~plugins/globalMix'
   ],
+  router: {
+    middleware: 'visit'
+  },
   /*
   ** Headers of the page
   */
