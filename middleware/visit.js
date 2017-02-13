@@ -16,7 +16,6 @@ const logPageView = (r, userAgent) => {
 
 export default function ({isServer, route, req}) {
   let userAgent = isServer ? req.headers['user-agent'] : window.navigator.userAgent
-  console.log('page-log: ', config)
   if (config.isProd) {
     logPageView(route, userAgent)
   }
