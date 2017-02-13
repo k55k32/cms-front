@@ -79,6 +79,7 @@ promise.then(() => {
   app.use(nuxt.render)
   app.listen(serverConfig.serverPort)
   console.log(`Server is listening on :::${serverConfig.serverPort} `)
+  console.log('Server config is', serverConfig)
 })
 .catch((error) => {
   console.error(error)
