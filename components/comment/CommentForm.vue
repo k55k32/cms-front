@@ -3,12 +3,12 @@
   .row.flex
     .width-100
       .input-group
-        label.required 昵称:
-        input(v-model="value.nickname" placeholder="公开 ( 免注册 ) " name="nickname" required maxlength="40")
+        label 昵称:
+        input(v-model="value.nickname" placeholder="选填：将会出现在评论列表内" name="nickname" maxlength="40")
     .width-100
       .input-group
-        label.required 邮箱:
-        input(v-model="value.email" type="email" name="email" placeholder="请输入邮箱（博主可能会跟你联系）不公开" required maxlength="40")
+        label 邮箱:
+        input(v-model="value.email" type="email" name="email" placeholder="选填：请输入邮箱（博主可能会跟你联系）不公开" maxlength="40")
   .row
     .width-100
       .input-group.top
