@@ -13,5 +13,8 @@ export default {
   },
   allNames () {
     return dao.get('article/article-map')
+  },
+  listAll () {
+    return dao.get('article/list-all')
   }
 }

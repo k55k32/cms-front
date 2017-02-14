@@ -1,6 +1,7 @@
 import Nuxt from 'nuxt'
 import express from 'express'
 import service from  './service/ArticleService'
+import settingService from  './service/SettingService'
 import commentService from  './service/CommentService'
 import utils from './utils'
 import serverConfig from './server-config'
@@ -9,6 +10,7 @@ import morgan from 'morgan'
 import compression from 'compression'
 import cors from 'cors'
 import sm from 'sitemap'
+import RSS from 'rss'
 const app = express()
 
 const isProd = serverConfig.isProd
@@ -71,6 +73,51 @@ app.get('/sitemap.xml', (req, res) => {
   }).catch(e => {
     res.send(e)
   })
+})
+
+const domain = 'https://diamondfsd.com/'
+app.get('/rss', async (req, res) => {
+  try {
+    let beginTime = new Date().getTime()
+    let articleList = await service.listAll()
+    let settings = await settingService.list()
+    let email  = settings['email']
+    let pubDate
+    if (articleList.length > 0) {
+      let newArticle = articleList[0]
+      pubDate = new Date(newArticle.updateTime)
+    }
+    let feed = new RSS({
+      title: settings['blog-name'],
+      description: settings['meta-description'],
+      generator: 'Diamond Blog Front Render',
+      site_url: domain,
+      feed_url: domain + 'rss',
+      managingEditor: email,
+      webMaster: email,
+      language: 'zh-ch',
+      pubDate: pubDate,
+      ttl: 60
+    })
+    let feedFormat = articleList.map(art => {
+      return {
+        title: art.title,
+        description: art.summary,
+        url: `${domain}article/${art.id}`,
+        categories: [art.catalogName],
+        author: settings['author'],
+        date: new Date(art.createTime)
+      }
+    })
+    feedFormat.forEach(feed.item.bind(feed))
+    res.header('Content-type', 'application/xml')
+    let xml = feed.xml({indent: false})
+    let useTime = new Date().getTime() - beginTime
+    res.send(xml + `<!-- Dynamic generation use time ${useTime} ms -->`)
+  } catch (e) {
+    console.error(e)
+    res.send(e)
+  }
 })
 
 const nuxt = new Nuxt(nuxtConfig)
