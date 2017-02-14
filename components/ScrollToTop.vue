@@ -41,7 +41,6 @@ export default {
 </script>
 
 <style lang="less">
-@size: 20px;
 .scroll-to-top{
   position: fixed;
   bottom: 10px;
