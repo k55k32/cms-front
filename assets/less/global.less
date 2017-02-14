@@ -25,8 +25,10 @@
   border: @size solid @color;
 }
 .line(@number: 4) {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: @number;
-  overflow: hidden;
+  @line-height: 1.6em;
+  position: relative;
+  display: block;
+  line-height:@line-height;
+  height:@number * @line-height;
+  overflow:hidden;
 }

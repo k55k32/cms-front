@@ -9,6 +9,9 @@
           i.icono-search
     nuxt
     my-footer.container
+    a.rss-link(href="/rss" target="_blank")
+      i.icono-rss
+      span RSS
     scroll-to-top
 </template>
 
@@ -36,6 +39,17 @@ export default {
 
 <style lang="less">
 @import "~assets/less/global.less";
+.rss-link{
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  color: #dddddd;
+}
+@media (max-width: 768px) {
+  .rss-link{
+    display: none;
+  }
+}
 .header{
   display: flex;
   justify-content: space-between;
