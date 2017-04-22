@@ -8,7 +8,15 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     setting: {},
-    catalogs: []
+    catalogs: [],
+    isLogin: false,
+    guestInfo: {},
+    token: ''
+  },
+  getters: {
+    isLogin: state => state.isLogin,
+    guestInfo: state => state.guestInfo,
+    token: state => state.token
   },
   mutations: {
     changeSetting (state, setting) {

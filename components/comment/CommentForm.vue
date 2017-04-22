@@ -1,5 +1,5 @@
 <template lang="pug">
-.comment-form
+.comment-form(:class="{'not-login': !isLogin}")
   .row.flex
     .width-100
       .input-group
@@ -16,6 +16,12 @@
         textarea.flex-1(v-model="value.content" placeholder="请输入讨论, 最多512字 ( 支持 Markdown 格式 )" required maxlength="512")
         .form-actions
           button.btn.primary(type="submit") 提交讨论
+  .not-login-mask(v-if="!isLogin")
+    p 登陆后可发表评论
+    p
+      a.login-by-github(href="javascript:;" @click="openLoginGithub")
+        img(src="../../assets/img/github-login.jpg")
+        span  Github Login
 </template>
 
 <script>
@@ -24,6 +30,19 @@ export default {
   watch: {
     value (val) {
       this.$emit('input', val)
+    }
+  },
+  computed: {
+    isLogin () {
+      return this.$store.getters.isLogin
+    }
+  },
+  methods: {
+    openLoginGithub () {
+      window.open('https://github.com/login/oauth/authorize?client_id=c10fd104be25fa95bcc4&scope=user:email', 'newindow', 'height=600,width=900,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=yes,status=no')
+      window.loginGithub = (guestInfo) => {
+        this.$store.dispatch('login-guest', guestInfo)
+      }
     }
   }
 }
@@ -48,6 +67,33 @@ export default {
   }
 }
 .comment-form{
+  position: relative;
+  .login-by-github{
+    height: 45px;
+    &>img{
+      height: 100%;
+      margin-right: .5em;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+  }
+  .not-login-mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    background: #fff;
+    line-height: 2;
+  }
   label{
     color: rgba(0, 0, 0, 0.8);
   }

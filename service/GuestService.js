@@ -1,8 +1,10 @@
 import dao from './BaseDao'
-import apiConfig from '../server-config'
 
 export default {
-  login(code) {
-      return dao.post(`guest/login/${code}`)
+  gitHubLogin (code) {
+    return dao.post(`guest/login/github/${code}`)
+  },
+  getGuestInfo (token) {
+    return dao.post(`guest/${token}`)
   }
 }

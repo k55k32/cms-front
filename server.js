@@ -1,8 +1,8 @@
 import Nuxt from 'nuxt'
 import express from 'express'
-import service from  './service/ArticleService'
-import settingService from  './service/SettingService'
-import commentService from  './service/CommentService'
+import service from './service/ArticleService'
+import settingService from './service/SettingService'
+import commentService from './service/CommentService'
 import utils from './utils'
 import serverConfig from './server-config'
 import nuxtConfig from './nuxt.config'
@@ -81,7 +81,7 @@ app.get('/rss', async (req, res) => {
     let beginTime = new Date().getTime()
     let articleList = await service.listAll()
     let settings = await settingService.list()
-    let email  = settings['email']
+    let email = settings['email']
     let pubDate
     if (articleList.length > 0) {
       let newArticle = articleList[0]
