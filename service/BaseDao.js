@@ -38,11 +38,7 @@ function get (path, data) {
 }
 function post (path, data) {
   let url = getUrl(path)
-  return axios.post(url, data, {
-    headers: {
-      Authorization: window.localStorage.getItem('token')
-    }
-  }).then(proessData)
+  return axios.post(url, data).then(proessData)
 }
 function page (path, currentPage = 1, pageSize = 10, data = {}) {
   data.currentPage = currentPage
