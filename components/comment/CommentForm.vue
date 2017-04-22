@@ -4,11 +4,11 @@
     .width-100
       .input-group
         label 昵称:
-        input(v-model="value.nickname" placeholder="选填：将会出现在评论列表内" name="nickname" maxlength="40")
+        input(:value="guestInfo.nickname", readonly)
     .width-100
       .input-group
         label 邮箱:
-        input(v-model="value.email" type="email" name="email" placeholder="选填：请输入邮箱（博主可能会跟你联系）不公开" maxlength="40")
+        input(:value="guestInfo.email", readonly)
   .row
     .width-100
       .input-group.top
@@ -35,13 +35,16 @@ export default {
   computed: {
     isLogin () {
       return this.$store.getters.isLogin
+    },
+    guestInfo () {
+      return this.$store.getters.guestInfo
     }
   },
   methods: {
     openLoginGithub () {
       window.open('https://github.com/login/oauth/authorize?client_id=c10fd104be25fa95bcc4&scope=user:email', 'newindow', 'height=600,width=900,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=yes,status=no')
       window.loginGithub = (guestInfo) => {
-        this.$store.dispatch('login-guest', guestInfo)
+        this.$store.dispatch('loginGuest', guestInfo)
       }
     }
   }

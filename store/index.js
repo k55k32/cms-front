@@ -24,6 +24,11 @@ const store = new Vuex.Store({
     },
     changeCatalogs (state, catalogs) {
       state.catalogs = catalogs
+    },
+    loginGuest (state, guestInfo) {
+      state.isLogin = true
+      state.guestInfo = guestInfo
+      state.token = guestInfo.token || state.token
     }
   },
   actions: {
@@ -41,6 +46,9 @@ const store = new Vuex.Store({
         })
       }
       return Promise.resolve(state.catalogs)
+    },
+    loginGuest ({commit}, guestInfo) {
+      commit('loginGuest', guestInfo)
     },
     async nuxtServerInit ({state}, context) {
       let result = await context.store.dispatch('loadSetting')
