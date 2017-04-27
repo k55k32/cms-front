@@ -1,10 +1,11 @@
 import service from '../service/SettingService'
 import catalogService from '../service/CatalogService'
+import GuestService from '../service/GuestService'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
+const TOKEN_KEY = 'guest_token'
 const store = new Vuex.Store({
   state: {
     setting: {},
@@ -47,7 +48,16 @@ const store = new Vuex.Store({
       }
       return Promise.resolve(state.catalogs)
     },
+    async loginGuestFromCache (store) {
+      let token = window.localStorage.getItem(TOKEN_KEY)
+      let guestInfo = await GuestService.getGuestInfo(token)
+      guestInfo.token = token
+      store.dispatch('loginGuest', guestInfo)
+    },
     loginGuest ({commit}, guestInfo) {
+      if (window) {
+        window.localStorage.setItem(TOKEN_KEY, guestInfo.token)
+      }
       commit('loginGuest', guestInfo)
     },
     async nuxtServerInit ({state}, context) {

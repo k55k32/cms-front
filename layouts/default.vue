@@ -23,7 +23,7 @@ export default {
   components: {
     MyFooter, ScrollToTop
   },
-  data () {
+  data (content) {
     return {
       keyword: this.$route.query.keyword,
       menus: menus
@@ -33,6 +33,9 @@ export default {
     searchSubmit () {
       this.$router.push({path: '/search', query: {keyword: this.keyword}})
     }
+  },
+  mounted () {
+    console.log(window.localStorage)
   }
 }
 </script>
