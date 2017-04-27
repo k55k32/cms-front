@@ -1,6 +1,6 @@
 import axios from 'axios'
 import serverConfig from '../server-config'
-import Const from '../utils/const'
+import Const from '../utils/const/index.js'
 const root = serverConfig.api
 
 function getUrl (path) {
