@@ -8,7 +8,7 @@ module.exports = {
   extends: 'standard',
   // required to lint *.vue files
   plugins: [
-    'html'
+    'html', 'eslint-plugin-html'
   ],
   // add your custom rules here
   'rules': {
