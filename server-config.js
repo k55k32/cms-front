@@ -4,7 +4,7 @@ exports.isProd = isProd
 
 exports.api = isProd ? 'https://api.diamondfsd.com/' : 'http://127.0.0.1:8889/' // 'http://api.diamondfsd.com/'
 
-exports.serverPort = 8081
+exports.serverPort = 3999
 
 const proxy = {
   protocol: isProd ? 'https://' : 'http://',
