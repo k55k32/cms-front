@@ -1,6 +1,6 @@
 import axios from 'axios'
 import serverConfig from '../server-config'
-
+import Const from '../utils/const'
 const root = serverConfig.api
 
 function getUrl (path) {
@@ -38,7 +38,16 @@ function get (path, data) {
 }
 function post (path, data) {
   let url = getUrl(path)
-  return axios.post(url, data).then(proessData)
+  let opt = {}
+  if (window) {
+    let token = window.localStorage.getItem(Const.TOKEN_KEY)
+    if (token) {
+      opt['headers'] = {
+        'Authorization': token
+      }
+    }
+  }
+  return axios.post(url, data, opt).then(proessData)
 }
 function page (path, currentPage = 1, pageSize = 10, data = {}) {
   data.currentPage = currentPage

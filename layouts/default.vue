@@ -35,7 +35,7 @@ export default {
     }
   },
   mounted () {
-    console.log(window.localStorage)
+    this.$store.dispatch('loginGuestFromCache')
   }
 }
 </script>

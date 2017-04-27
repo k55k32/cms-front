@@ -3,9 +3,10 @@ import catalogService from '../service/CatalogService'
 import GuestService from '../service/GuestService'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Const from '../utils/const'
 
 Vue.use(Vuex)
-const TOKEN_KEY = 'guest_token'
+const TOKEN_KEY = Const.TOKEN_KEY
 const store = new Vuex.Store({
   state: {
     setting: {},
@@ -50,9 +51,11 @@ const store = new Vuex.Store({
     },
     async loginGuestFromCache (store) {
       let token = window.localStorage.getItem(TOKEN_KEY)
-      let guestInfo = await GuestService.getGuestInfo(token)
-      guestInfo.token = token
-      store.dispatch('loginGuest', guestInfo)
+      if (token) {
+        let guestInfo = await GuestService.getGuestInfo(token)
+        guestInfo.token = token
+        store.dispatch('loginGuest', guestInfo)
+      }
     },
     loginGuest ({commit}, guestInfo) {
       if (window) {
