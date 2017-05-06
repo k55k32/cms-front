@@ -39,7 +39,6 @@ import CommentItem from '~components/comment/CommentItem'
 import PostContent from '~components/article/PostContent'
 import ArticleNav from '~components/article/ArticleNav'
 import TimelineStep from '~components/TimelineStep'
-const CACHE_KEY = 'comment-user'
 export default {
   components: { ArticleLink, PostContent, CommentForm, TimelineStep, CommentItem, ArticleNav },
   async data ({params}) {
@@ -78,7 +77,6 @@ export default {
           this.$refs.comment.scrollIntoView()
           this.$refs.commentComponent.foucsInput()
         }, 300)
-
       }
     })
   },

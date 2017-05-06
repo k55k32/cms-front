@@ -41,12 +41,12 @@ export default {
     }
   },
   methods: {
-    foucsInput() {
+    foucsInput () {
       this.$refs.content.focus()
     },
     openLoginGithub () {
-      location.href = `https://github.com/login/oauth/authorize?client_id=c10fd104be25fa95bcc4&scope=user:email`
-      localStorage.setItem('redirect_uri', `${this.$route.path}?comment=1`)
+      window.location.href = `https://github.com/login/oauth/authorize?client_id=c10fd104be25fa95bcc4&scope=user:email`
+      this.$cacheSet('redirect_uri', `${this.$route.path}?comment=1`)
     }
   }
 }

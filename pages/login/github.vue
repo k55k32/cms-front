@@ -1,6 +1,6 @@
 <template lang="pug">
 .login
-  p {{hasError && 'Ops!!! the error msg:'}}{{msg}}
+  p {{hasError ? 'Ops!!! the error msg:' : ''}}{{msg}}
   a(href="/" v-if="hasError")
     u 回到首页 (Home)
 </template>
@@ -19,7 +19,8 @@ export default {
       guestInfo.token = token
       this.$store.dispatch('loginGuest', guestInfo)
       this.msg = 'Login Success! Close this windows'
-      let redirect = localStorage.getItem('redirect_uri')
+      let redirect = this.$cacheGet('redirect_uri')
+      let location = window.location
       if (redirect) {
         this.$router.replace(redirect)
       } else {

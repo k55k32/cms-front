@@ -52,7 +52,9 @@ const store = new Vuex.Store({
     async loginGuestFromCache (store) {
       let token = window.localStorage.getItem(TOKEN_KEY)
       if (token) {
+        console.log(token)
         let guestInfo = await GuestService.getGuestInfo(token)
+        console.log(guestInfo)
         guestInfo.token = token
         store.dispatch('loginGuest', guestInfo)
       }
