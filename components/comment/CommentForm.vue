@@ -13,7 +13,7 @@
     .width-100
       .input-group.top
         label.required 内容:
-        textarea.flex-1(v-model="value.content" placeholder="请输入讨论, 最多512字 ( 支持 Markdown 格式 )" required maxlength="512")
+        textarea.flex-1(v-model="value.content" placeholder="请输入讨论, 最多512字 ( 支持 Markdown 格式 )" required maxlength="512" ref="content")
         .form-actions
           button.btn.primary(type="submit") 提交讨论
   .not-login-mask(v-if="!isLogin")
@@ -41,11 +41,12 @@ export default {
     }
   },
   methods: {
+    foucsInput() {
+      this.$refs.content.focus()
+    },
     openLoginGithub () {
-      window.open('https://github.com/login/oauth/authorize?client_id=c10fd104be25fa95bcc4&scope=user:email', 'newindow', 'height=600,width=900,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=yes,status=no')
-      window.loginGithub = (guestInfo) => {
-        this.$store.dispatch('loginGuest', guestInfo)
-      }
+      location.href = `https://github.com/login/oauth/authorize?client_id=c10fd104be25fa95bcc4&scope=user:email`
+      localStorage.setItem('redirect_uri', `${this.$route.path}?comment=1`)
     }
   }
 }

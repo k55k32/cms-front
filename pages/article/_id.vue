@@ -20,8 +20,8 @@ section.article-container
         .line
         article-link(:id="article.nextId", :text="article.nextTitle", name="下一篇", style="text-left")
     .content(id='send-comment')
-      form(type="post", @submit.prevent="submitComment")
-        comment-form(v-model="form")
+      form(type="post", @submit.prevent="submitComment" ref="comment")
+        comment-form(v-model="form" ref="commentComponent")
     .content.comments(v-if="comments && comments.length")
       .timeline
         transition-group(name="list" tag="div")
@@ -72,9 +72,15 @@ export default {
     }
   },
   mounted () {
-    if (process.BROWSER_BUILD) {
-      this.form = {...this.form, ...this.$cacheGet(CACHE_KEY)}
-    }
+    this.$nextTick(() => {
+      if (this.$route.query.comment) {
+        setTimeout(() => {
+          this.$refs.comment.scrollIntoView()
+          this.$refs.commentComponent.foucsInput()
+        }, 300)
+
+      }
+    })
   },
   created () {
     this.buildQrcode()
@@ -118,10 +124,6 @@ export default {
           lastTime: comments[0] && comments[0].createTime
         })
         this.comments.unshift(...newComments)
-      })
-      this.$cacheSet(CACHE_KEY, {
-        nickname: form.nickname,
-        email: form.email
       })
     }
   }
